@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 function App(){
 
   return(
-    <div className="min-h-screen bg-gradient-to-b from-blue-300 to-purple-400">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0b1f3a] to-[#1e293b]">
     <Navbar />
      <Routes>
       <Route path="/" element={<Home />} />

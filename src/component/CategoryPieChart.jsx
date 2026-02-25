@@ -13,7 +13,7 @@ function CategoryPieChart() {
   const COLORS = ["#3b82f6", "#ef4444", "#22c55e", "#f59e0b"];
 
   return (
-    <div className="bg-white p-6 mt-10 mx-2 mb-5 sm:mb-0 sm:mx-10  rounded-xl shadow-md">
+    <div className="  mt-10 mx-2 mb-5 sm:mb-0 sm:mx-10  bg-[#14243c] border border-white/5 rounded-2xl p-6 shadow-2xl">
      <h1 className="text-md text-center  text-2xl  sm:text-3xl text-blue-400">Spending By Category</h1>
 
       <PieChart width={350} height={350}>

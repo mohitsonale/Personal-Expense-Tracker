@@ -7,7 +7,7 @@ function Navbar(){
 
     return(
 
-        <div className="flex justify-between  items-center  p-2 sm:p-2 border selection:text-green-300 selection:bg-black border-gray-400   bg-gradient-to-l from-blue-200 to-blue-500 text-lg sm:text-2xl cursor-pointer text-black">
+        <div className="flex justify-between  items-center  p-2 sm:p-2 outline-none selection:text-green-300 selection:bg-black    bg-gradient-to-br from-[#0f172a] via-[#0b1f3a] to-[#1e293b] text-md sm:text-2xl cursor-pointer text-white font-bold">
 
             <div>
                <h1 onClick={()=>navigate("/")}>Personal Tracker</h1>
@@ -16,7 +16,7 @@ function Navbar(){
 
                 <ul className="flex text-center gap-2 sm:gap-10 ">
                     <li  onClick={()=>navigate("/dashboard")}>Dashboard</li>
-                    <li  onClick={()=>navigate("/addtransaction")}>Addtranction</li>
+                    <li  onClick={()=>navigate("/addtransaction")}>Addtransaction</li>
                 </ul>
 
             </div>
