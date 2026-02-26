@@ -1,25 +1,11 @@
+import { useContext } from "react";
+import { ExpenseContext } from "../context/ExpenseContext";
 
 
 function Summarycard() {
 
+    const { transaction } = useContext(ExpenseContext)
 
-    const transaction = [
-        {
-            id: 1,
-            date: "2026-02-23",
-            description: "Dinner",
-            category: "Food",
-            amount: -250,
-        },
-        {
-            id: 2,
-            date: "2026-02-22",
-            description: "Salary",
-            category: "Income",
-            amount: 5000,
-        },
-          
-    ]
     return (
 
         <div className="bg-[#14243c] border border-white/5 rounded-2xl p-6 shadow-2xl mt-3 text-white
@@ -39,7 +25,7 @@ function Summarycard() {
 
             <div>
                 {
-                    transaction.map((item) => (
+                    [...transaction].reverse().map((item) => (
 
                         <div key={item.id} className="grid grid-cols-4 items-center text-sm">
                             <div>{item.date}</div>
@@ -48,13 +34,16 @@ function Summarycard() {
 
 
                             <div
-                                className={` font-medium ${item.amount < 0
-                                        ? "text-red-500"
-                                        : "text-green-600"
+                                className={` font-medium ${item.type==="expense"
+                                    ? "text-red-500"
+                                    : "text-green-600"
                                     }`}
                             >
-                                {item.amount < 0 ? "-" : "+"} ₹{Math.abs(item.amount)}
+                                {item.type === "expense" ? "-" : "+"}
+                                ₹{item.amount}
                             </div>
+
+                      
 
 
                         </div>
