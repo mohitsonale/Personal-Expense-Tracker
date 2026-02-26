@@ -1,10 +1,13 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 export const ExpenseContext = createContext();
 
 function Expenseprovider({ children }) {
+
+    const navigate=useNavigate()
 
     // loaclstorage se intial data lo
     const [transaction, Settransaction] = useState(() => {
@@ -40,6 +43,7 @@ function Expenseprovider({ children }) {
     const Cleartransaction=()=>{
         Settransaction([]);
         localStorage.removeItem("transaction")
+        navigate("/")
     }
 
     const deleteTransaction=(id)=>{
