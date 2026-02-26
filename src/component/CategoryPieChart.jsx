@@ -9,7 +9,7 @@ function CategoryPieChart() {
  const { transaction }=useContext(ExpenseContext);
 
   const expenseTransactions = transaction.filter(
-    (t) => t.type === "expense"
+    (t) => t.type === "expense" || "income"
   );
 
   const categoryMap = {};
