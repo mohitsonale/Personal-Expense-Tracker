@@ -4,7 +4,8 @@ import { ExpenseContext } from "../context/ExpenseContext";
 
 function Summarycard() {
 
-    const { transaction } = useContext(ExpenseContext)
+    const { transaction,deleteTransaction } = useContext(ExpenseContext)
+
 
     return (
 
@@ -13,7 +14,7 @@ function Summarycard() {
             <h1 className="text-md text-center sm:text-left text-2xl  sm:text-3xl text-blue-400">Recent Transactions</h1>
             <hr />
             {/* //table head */}
-            <div className="grid grid-cols-4 text-sm sm:text-xl mt-4 items-center ">
+            <div className="grid grid-cols-4 text-sm  sm:text-2xl mt-4 mb-2  items-center ">
 
                 <div>Date</div>
                 <div>Describetion</div>
@@ -27,7 +28,7 @@ function Summarycard() {
                 {
                     [...transaction].reverse().map((item) => (
 
-                        <div key={item.id} className="grid grid-cols-4 items-center text-sm">
+                        <div key={item.id} className="relative grid text-sm sm:text-xl  grid-cols-4 bg-[#14243c]/70  border border-white/3 shadow-2xl rounded-xl   py-2  my-4  items-center">
                             <div>{item.date}</div>
                             <div>{item.description}</div>
                             <div>{item.category}</div>
@@ -42,6 +43,7 @@ function Summarycard() {
                                 {item.type === "expense" ? "-" : "+"}
                                 ₹{item.amount}
                             </div>
+                            <i onClick={()=>{if(window.confirm("Are you really sure!!!")){deleteTransaction(item.id)}}}  className="absolute right-3 cursor-pointer text-red-600  fa-regular fa-trash-can"></i>
 
                       
 

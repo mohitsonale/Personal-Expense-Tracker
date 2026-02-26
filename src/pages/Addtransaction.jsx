@@ -95,6 +95,7 @@ function Addtransaction() {
 
                         <h2 className="mb-1 text-xl text-cyan-300">Category</h2>
                         <select name="category" value={formData.category} onChange={handlechange} className="outline-blue-500  text-md sm:text-xl border text-blue-400 rounded-md border-gray-400  px-2 sm:px-5 py-2 "  >
+                            <option value="">Other</option>
                             <option value="food">Food</option>
                             <option value="travel" >Travel</option>
                             <option value="bills">Bills</option>

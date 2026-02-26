@@ -42,9 +42,17 @@ function Expenseprovider({ children }) {
         localStorage.removeItem("transaction")
     }
 
+    const deleteTransaction=(id)=>{
+
+       Settransaction(prev =>
+    prev.filter(t => t.id !== id)
+  );
+
+    }
+
     return (
 
-        <ExpenseContext.Provider value={{ transaction, addtransaction,totalIncome,totalExpense,totalBalance,Cleartransaction }}>
+        <ExpenseContext.Provider value={{ transaction, addtransaction,deleteTransaction,totalIncome,totalExpense,totalBalance,Cleartransaction, }}>
             {children}
         </ExpenseContext.Provider>
     )
