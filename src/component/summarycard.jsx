@@ -14,10 +14,10 @@ function Summarycard() {
             <h1 className="text-md text-center sm:text-left text-2xl  sm:text-3xl text-blue-400">Recent Transactions</h1>
             <hr />
             {/* //table head */}
-            <div className="grid grid-cols-4 gap-x-1.5 sm:gap-0 text-sm  sm:text-2xl mt-4 mb-2  items-center ">
+            <div className="grid grid-cols-4  text-sm  sm:text-2xl mt-4 mb-2  items-center ">
 
                 <div>Date</div>
-                <div>Describetion</div>
+                <div>Describtion</div>
                 <div>Category</div>
                 <div>Amout</div>
 
