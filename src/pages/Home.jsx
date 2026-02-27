@@ -18,7 +18,7 @@ function Home() {
 
             >
                 <div  className="w-32 h-32 mb-10 flex  items-center justify-center">
-                    <img onClick={()=>navigate("/dashboard")} className="w-full h-full cursor-pointer   hover:shadow-xl hover:scale-105 transition-all duration-500 object-cover rounded-full" src={logo} alt="logo" />
+                    <img onClick={()=>navigate("/dashboard")} className="w-full h-full cursor-pointer  hover:shadow-xl hover:scale-105 transition-all duration-500 object-cover rounded-full" src={logo} alt="logo" />
                 </div>
                 <h1 className="text-4xl sm:text-6xl bg-gradient-to-l from-cyan-500 to-purple-400 bg-clip-text text-transparent font-extrabold">
                     Smarter Spending Starts Here.
