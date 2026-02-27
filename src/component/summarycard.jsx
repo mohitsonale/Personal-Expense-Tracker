@@ -29,7 +29,7 @@ function Summarycard() {
                     [...transaction].reverse().map((item) => (
 
                         <div key={item.id} className="relative grid text-sm sm:text-xl  grid-cols-4 bg-[#14243c]/70  border border-white/3 shadow-2xl rounded-xl   py-2  my-4  items-center">
-                            <div>{item.date}</div>
+                            <div className="text-xs">{item.date}</div>
                             <div>{item.description}</div>
                             <div>{item.category}</div>
 
