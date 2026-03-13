@@ -17,7 +17,7 @@ function Addtransaction() {
         description: "",
         type: "",
         category: "",
-        date: ""
+        date:""
     });
 
     const handlechange = (e) => {
@@ -55,7 +55,7 @@ function Addtransaction() {
             viewport={true}
         >
 
-            <form onSubmit={handleSubmit} className="relative  px-10 py-8   mt-12 sm:mt-15 bg-[#14243c] border border-white/5 rounded-2xl  text-white shadow-2xl   " >
+            <form onSubmit={handleSubmit} className="relative  px-10 py-8   mt-12 sm:mt-15 bg-[#14243c]/8 border border-white/5 rounded-2xl  text-white shadow-2xl   " >
 
                 <h1 className="text-center font-medium text-3xl mb-5 text-blue-500">New Transaction</h1>
 
@@ -112,12 +112,12 @@ function Addtransaction() {
 
                 <div>
                     <h2 className="mb-1 text-xl text-cyan-300">Date</h2>
-                    <input name="date" value={formData.date} onChange={handlechange} className="outline-blue-500  text-md sm:text-xl border text-blue-300 border-gray-400 rounded-md px-8 py-2 " type="date" required />
+                    <input name="date" value={formData.date} onChange={handlechange}  className="outline-blue-500  text-md sm:text-xl border text-blue-300 border-gray-400 rounded-md px-8 py-2 " type="date" required />
                 </div>
 
                 <div className="flex justify-center items-center">
 
-                    <button className=" text-2xl cursor-pointer bg-[#14243c]  border-white/5 rounded-xl shadow-2xs  border px-4 py-1 mt-10 text-cyan-300 ">Add +</button>
+                    <button className=" text-2xl cursor-pointer bg-[#14243c]/10  border border-white/5 rounded-xl shadow-2xs  px-4 py-1 mt-10 text-cyan-300 ">Add +</button>
                 </div>
             </form>
         </motion.div>

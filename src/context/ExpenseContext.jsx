@@ -9,14 +9,13 @@ function Expenseprovider({ children }) {
 
     const navigate=useNavigate()
 
-    // loaclstorage se intial data lo
     const [transaction, Settransaction] = useState(() => {
 
         const savedata = localStorage.getItem("transaction");
         return savedata ? JSON.parse(savedata) : [];
     })
 
-    //  jab bhi transactions change ho toh  localstrorage se data lo
+   
 
     useEffect(() => {
 
@@ -24,7 +23,6 @@ function Expenseprovider({ children }) {
 
     }, [transaction]);
 
-    // add transaction function
 
     const addtransaction = (transaction) => {
         Settransaction((prev) => [...prev, transaction])
