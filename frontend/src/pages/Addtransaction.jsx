@@ -40,7 +40,7 @@ function Addtransaction() {
             date: formData.date
         };
 
-        addtransaction(newTransaction);
+        addTransaction(newTransaction);
 
         navigate("/dashboard");
     };
