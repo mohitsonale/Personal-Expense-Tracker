@@ -4,9 +4,9 @@ let getUserdata=async(req,res)=>{
 
     try {
 
-        let userId=req.user.id;
+         console.log("USER ID:", req.user.id);  // 👈 add this
 
-        let user=await Usermodel.findOne(userId);
+        let user=await Usermodel.findById(req.user.id);
 
         res.json({success:true,message:"Verified User",user:{name:user.name}})
         

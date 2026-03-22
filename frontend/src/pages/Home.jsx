@@ -18,7 +18,7 @@ function Home() {
 
             >
                 <div  className="w-32 h-32 mb-10 flex  items-center justify-center">
-                    <img  onClick={()=>navigate("/dashboard")} className="w-full h-full  cursor-pointer  hover:shadow-blue-300 shadow-md hover:scale-105 hover:rotate-180
+                    <img  className="w-full h-full  cursor-pointer  hover:shadow-blue-300 shadow-md hover:scale-105 hover:rotate-180
                       transition-all duration-800 object-cover rounded-full" src={logo1} alt="logo" />
                 </div>
                 <h1 className="text-4xl sm:text-6xl bg-gradient-to-l from-cyan-500/40 to-purple-400/40 bg-clip-text text-transparent font-extrabold">

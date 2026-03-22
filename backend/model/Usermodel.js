@@ -16,10 +16,15 @@ let Userschema= new mongoose.Schema({
         type:String,
         required:true,
 
-    }
+    },
+     isAccountVerified:{    
+        type:Boolean,
+        default:false
+    },
+
 })
 
-let Usermodel= mongoose.model('Users',Userschema);
+let Usermodel= mongoose.model('User',Userschema);
 
 export default Usermodel;
  

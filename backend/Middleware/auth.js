@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken"
 
 const authMiddleware=async(req,res,next)=>{
 
-    let {token}=req.header
+    let {token}=req.headers;
 
     if(!token){
         return res.json({status:false,message:"Wrong person id"})
@@ -10,10 +10,10 @@ const authMiddleware=async(req,res,next)=>{
 
     try {
 
-        let tokendecode=jwt.verify(token,process.env.jwt_SECRET)
+        let tokendecode=jwt.verify(token,process.env.JWT_SECRET)
 
         if(tokendecode.id){
-            req.user={id:tokendecode}
+            req.user={id:tokendecode.id}
         }
         else{
             return res.json({status:false,message:"Invalid Token"})

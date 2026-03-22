@@ -1,12 +1,17 @@
-import mongoose from  "mongoose"
+import mongoose from "mongoose"
 
-const connectDB=async()=>{
+const connectDB = async () => {
 
-    mongoose.connection.on('connected',()=>{
-        console.log("Mongodb Connected Successfully")
-    })
+    try {
+        await mongoose.connect(process.env.MONGODB_URI, {
+            dbName: "PERSONAL_TRACKER"
+        })
+        console.log("MongoDB Connected Successfully ✅");
+    } catch (error) {
+        console.log("MongoDB Error ❌", error.message);
+    }
 
-    await mongoose.connect(`${process.env.MONGODB_URI}/PERSONAL_TRACKER`)
+
 }
 
 export default connectDB;

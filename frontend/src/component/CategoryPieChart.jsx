@@ -6,11 +6,11 @@ import { ExpenseContext } from "../context/ExpenseContext";
 function CategoryPieChart() {
 
 
-  const { transaction } = useContext(ExpenseContext);
+  const { transaction = [] } = useContext(ExpenseContext);
 
   const expenseTransactions = transaction.filter(
-    (t) => t.type === "expense" || "income"
-  );
+  (t) => t.type === "expense" || t.type === "income"
+);
 
   const categoryMap = {};
 

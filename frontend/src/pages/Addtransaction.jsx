@@ -10,7 +10,7 @@ function Addtransaction() {
 
     const navigate = useNavigate()
 
-    const { addtransaction } = useContext(ExpenseContext)
+    const { addTransaction } = useContext(ExpenseContext)
 
     const [formData, SetformData] = useState({
         amount: "",
