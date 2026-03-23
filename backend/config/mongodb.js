@@ -6,9 +6,9 @@ const connectDB = async () => {
         await mongoose.connect(process.env.MONGODB_URI, {
             dbName: "PERSONAL_TRACKER"
         })
-        console.log("MongoDB Connected Successfully ✅");
+        console.log("MongoDB Connected Successfully")
     } catch (error) {
-        console.log("MongoDB Error ❌", error.message);
+        console.log("MongoDB Error", error.message);
     }
 
 

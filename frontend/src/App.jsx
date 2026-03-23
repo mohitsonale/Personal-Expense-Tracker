@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import LightRays from "../animation/LightRays";
 
 
 import Addtransaction from "./pages/Addtransaction";
@@ -12,20 +13,39 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
 
-  const {showlogin}=useContext(ExpenseContext)
+  const { showlogin } = useContext(ExpenseContext)
 
   return (
-    <div className="relative min-h-screen w-full bg-black overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black  overflow-hidden">
 
-  
-    
 
-     <ToastContainer / >
-      <Navbar />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffffff"
+          raysSpeed={1}
+          lightSpread={1}
+          rayLength={6}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0}
+          distortion={0}
+          className="custom-rays"
+          pulsating={false}
+          fadeDistance={0.7}
+          saturation={2}
+        />
+      </div>
+
+      <ToastContainer />
+      <Navbar className="relative z-10 "  />
       {
-           showlogin   && <Login />
-      }
-      <div className="px-4 sm:px-8  lg:px-12">
+        showlogin && (
+         <div className="fixed inset-0 z-50 bg-black/40 flex justify-center items-center">
+          <Login />
+        </div>
+      )}
+      <div className="relative z-10 px-4 sm:px-8 lg:px-12">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />

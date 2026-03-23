@@ -1,18 +1,29 @@
 import Usermodel from "../model/Usermodel.js";
 
-let getUserdata=async(req,res)=>{
+let getUserdata = async (req, res) => {
 
     try {
 
-         console.log("USER ID:", req.user.id);  // 👈 add this
+        console.log("USER ID:", req.user.id);  // 👈 add this
 
-        let user=await Usermodel.findById(req.user.id);
+        let user = await Usermodel.findById(req.user.id);
 
-        res.json({success:true,message:"Verified User",user:{name:user.name}})
-        
+        res.json(
+            {
+                success: true,
+                message: "Verified User",
+                user: {
+                    _id: user._id,   // ✅ ADD THIS
+                    name: user.name,
+                    email: user.email
+                }
+
+            }
+        )
+
     } catch (error) {
-        
-        res.json({status:false,mnessage:error.mnessage})
+
+        res.json({ status: false, mnessage: error.mnessage })
     }
 }
 

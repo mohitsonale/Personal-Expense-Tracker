@@ -46,8 +46,9 @@ let registeruser = async (req, res) => {
             message: "Registration Successfull",
             token,
             user: {
-                name: newuser.name,
-                email: newuser.email
+                _id: user._id,   // ✅ ADD THIS
+                name: user.name,
+                email: user.email
             }
         })
 
@@ -98,9 +99,9 @@ let login = async (req, res) => {
             message: "Successfully Login",
             token,
             user: {
+                _id: user._id,   // ✅ ADD THIS
                 name: user.name,
                 email: user.email
-
             }
         })
 

@@ -1,118 +1,127 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
-
-import { ToastContainer, toast } from 'react-toastify';
-
-
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const ExpenseContext = createContext();
 
-function Expenseprovider({ children }) {
-
-    const navigate = useNavigate()
+function ExpenseProvider({ children }) {
+    const navigate = useNavigate();
 
     const [user, Setuser] = useState(null);
     const [showlogin, Setshowlogin] = useState(false);
-    const [token, Settoken] = useState(localStorage.getItem("token"))
+    const [token, Settoken] = useState(localStorage.getItem("token"));
+    const [transaction, Settransaction] = useState([]);
 
     const backendurl = import.meta.env.VITE_BACKEND_URL;
 
-
-
-
-
+    // ------------------ API CALLS ------------------
     const getuserdata = async () => {
-
         try {
-
-            let { data } = await axios.get(backendurl + '/api/user/userdata', {
+            let { data } = await axios.get(`${backendurl}/api/user/userdata`, {
                 headers: { token },
-
             });
 
             if (data.success) {
                 Setuser(data.user);
+                loadUserTransactions(data.user._id); // load transactions for this user
+            } else {
+                toast.error(data.message);
             }
-            else {
-                toast.error(data.message)
-            }
-
         } catch (error) {
-
-            toast.error(error.message)
-
-
-
+            toast.error(error.message);
         }
-    }
+    };
 
     const getauthstate = async () => {
-
         try {
-
-            let { data } = await axios.get(backendurl + '/api/auth/is-authentication',
-                {
-                    headers: { token },
-                    withCredentials: true
-                }
-            );
+            let { data } = await axios.get(`${backendurl}/api/auth/is-authentication`, {
+                headers: { token },
+                withCredentials: true
+            });
 
             if (data.success) {
-                // Setshowlogin(false);
-                getuserdata()
+                Setshowlogin(false);
+                getuserdata();
             }
-
         } catch (error) {
-
-            toast.error(error.message)
-
+            toast.error(error.message);
         }
-    }
-
-    // console.log("USER IN CONTEXT:", user);
+    };
 
     useEffect(() => {
-        if (token) {
-            // Setshowlogin(true);
-            getauthstate();
-        }
-        else {
-            Setshowlogin(false);
-        }
-    }, [token])
+        if (token) getauthstate();
+        else Setshowlogin(false);
+    }, [token]);
 
-
-    const [transaction, Settransaction] = useState([]);
-
-    useEffect(() => {
-        if (!user) {
+    // ------------------ TRANSACTION HANDLERS ------------------
+    const loadUserTransactions = (userId) => {
+        if (!userId) {
             Settransaction([]);
-            return; 
-        }
-        const userKey = `transaction_${user.id}`;
-        const savedata = localStorage.getItem(userKey);
-        Settransaction(savedata ? JSON.parse(savedata) : []);
-
-    }, [user]);
-
-
-    useEffect(() => {
-
-        if (!user) {
             return;
         }
+
+        const userKey = `transaction_${userId}`;
+        const savedata = localStorage.getItem(userKey);
+        Settransaction(savedata ? JSON.parse(savedata) : []);
+    };
+
+    const addTransaction = (newTransaction) => {
         
-        const userKey = `transaction_${user.id}`;
-        localStorage.setItem(userKey, JSON.stringify(transaction));
+        
+        Settransaction(prev => {
+            const updated = [...prev, newTransaction];
+            
+            if(user?._id){
 
-    }, [transaction, user]);
+                const userKey = `transaction_${user._id}`;
+                localStorage.setItem(userKey, JSON.stringify(updated));
+            }
 
 
-    const addTransaction = (transaction) => {
-        Settransaction((prev) => [...prev, transaction])
-    }
+            return updated;
+        });
+    };
 
+    console.log("USER ID:", user?._id);
+    console.log("KEY:", `transaction_${user?._id}`);
+
+    const deleteTransaction = (id) => {
+        if (!user?._id) return;
+        Settransaction(prev => {
+            const updated = prev.filter(t => t.id !== id);
+
+           
+                const userKey = `transaction_${user._id}`;
+                localStorage.setItem(userKey, JSON.stringify(updated));
+          
+
+            return updated;
+        });
+    };
+
+    const Cleartransaction = () => {
+        Settransaction([]);
+        if (user) {
+            const userKey = `transaction_${user._id}`;
+            localStorage.removeItem(userKey);
+        }
+        navigate("/");
+    };
+
+    const logout = () => {
+        if (!window.confirm("Are you really want to logout")) return;
+
+        localStorage.removeItem("token");
+        Settoken("");
+        Setuser(null);
+        Settransaction([]); // only clear in-memory
+        Setshowlogin(true);
+        navigate("/");
+        toast.success("Logged out successfully");
+    };
+
+    // ------------------ CALCULATIONS ------------------
     const totalIncome = transaction
         .filter(t => t.type === "income" || !t.type)
         .reduce((acc, t) => acc + t.amount, 0);
@@ -123,46 +132,7 @@ function Expenseprovider({ children }) {
 
     const totalBalance = totalIncome - totalExpense;
 
-    const Cleartransaction = () => {
-        Settransaction([]);
-
-        if (user) {
-
-            localStorage.removeItem(`transaction_${user.id}`)
-        }
-        navigate("/")
-    }
-
-    const deleteTransaction = (id) => {
-
-        Settransaction(prev =>
-            prev.filter(t => t.id !== id)
-        );
-
-    }
-
-    const loadUserTransactions = (userId) => {
-        const userKey = `transaction_${userId}`;
-        const savedata = localStorage.getItem(userKey);
-        Settransaction(savedata ? JSON.parse(savedata) : []);
-    }
-
-    const logout = () => {
-
-        const confirmlogout = window.confirm("Are you really want to logout")
-
-        if (!confirmlogout)
-            return;
-
-
-        localStorage.removeItem("token")
-        Settoken("")
-        Setuser(null)
-        Setshowlogin(true)
-        // Settransaction([]);
-        navigate("/")
-        toast.success("Logged out successfully")
-    }
+    // ------------------ CONTEXT VALUE ------------------
     const value = {
         transaction,
         addTransaction,
@@ -182,17 +152,13 @@ function Expenseprovider({ children }) {
         Setuser,
         getuserdata,
         logout
-
-    }
+    };
 
     return (
-
         <ExpenseContext.Provider value={value}>
             {children}
         </ExpenseContext.Provider>
-    )
-
-
+    );
 }
 
-export default Expenseprovider;
+export default ExpenseProvider;
