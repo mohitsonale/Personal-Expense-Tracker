@@ -4,7 +4,7 @@ const authMiddleware=async(req,res,next)=>{
 
     let {token}=req.headers;
 
-    if(!token){
+    if(!token){ 
         return res.json({status:false,message:"Wrong person id"})
     }
 
