@@ -17,7 +17,8 @@ function Summarycard() {
             <div className="grid grid-cols-4  text-sm  sm:text-2xl mt-4 mb-2  items-center ">
 
                 <div>Date</div>
-                <div>Describtion</div>
+                <div className="sm:hidden">Desc.</div>
+                <div className="hidden sm:inline">Describtion</div>
                 <div>Category</div>
                 <div>Amout</div>
 
