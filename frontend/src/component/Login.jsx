@@ -54,16 +54,16 @@ function Login() {
     }, []);
 
     return (
-        <div className="fixed left-0 right-0 bottom-0 top-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
+        <div className="fixed left-0 right-0 bottom-0 top-0 z-10 text-white backdrop-blur-sm bg-black/30 flex justify-center items-center">
             <motion.form
                 onSubmit={onsubmithandler}
-                className="relative bg-white p-10 rounded-xl text-black"
+                className="relative  p-10 bg-[#14243c]/8 border border-white/5 rounded-2xl"
                 initial={{ opacity: 0.2, y: 70 }}
                 transition={{ duration: 0.8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={true}
             >
-                <h1 className="text-center text-2xl text-neutral-700 font-medium">
+                <h1 className="text-center text-2xl text-white/60 font-medium">
                     {state === "Sign up" ? "Sign up" : "Login"}
                 </h1>
                 <p className="text-sm text-center text-gray-500">
@@ -71,25 +71,25 @@ function Login() {
                 </p>
 
                 {state === "Sign up" && (
-                    <div className="flex items-center border border-gray-400 gap-2 rounded-xl mt-5 px-6 py-1">
+                    <div className="flex items-center border border-gray-400/10 gap-2 rounded-xl mt-5 px-6 py-1">
                         <i className="fa-solid fa-user w-5"></i>
                         <input onChange={e => Setname(e.target.value)} value={name} type="text" placeholder="Enter your name" required className="outline-none text-sm" />
                     </div>
                 )}
 
-                <div className="flex items-center gap-2 border border-gray-400 rounded-xl mt-5 px-6 py-1">
+                <div className="flex items-center gap-2 border border-gray-400/10 rounded-xl mt-5 px-6 py-1">
                     <i className="fa-solid fa-envelope w-5"></i>
                     <input onChange={e => Setemail(e.target.value)} value={email} type="email" placeholder="Enter your email" required className="outline-none text-sm" />
                 </div>
 
-                <div className="flex items-center border border-gray-400 gap-2 rounded-xl mt-5 px-6 py-1">
+                <div className="flex items-center border border-gray-400/10 gap-2 rounded-xl mt-5 px-6 py-1">
                     <i className="fa-solid fa-lock w-5"></i>
                     <input onChange={e => Setpassword(e.target.value)} value={password} type="password" placeholder="Enter your password" required className="outline-none text-sm" />
                 </div>
 
                 <p className="text-sm text-blue-700 cursor-pointer my-2">Forgot password?</p>
 
-                <button className="w-full rounded-full bg-gradient-to-r from-blue-500 to-purple-400 font-medium cursor-pointer text-white py-2 mt-2 hover:scale-105 duration-500 transition-all">
+                <button className="w-full rounded-full bg-[#14243c]/8 border border-white/5 font-medium cursor-pointer text-white py-2 mt-2 hover:scale-105 duration-500 transition-all">
                     {state === "Sign up" ? "Create Account" : "Login"}
                 </button>
 

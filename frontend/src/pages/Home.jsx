@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import logo1 from "../assets/logo1.png";
 import TextType from "../../animation/TextType";
+import CircularText from "../../animation/CircularText";
 
 function Home() {
     return (
         <div>
 
+
+
+          
             <motion.div
                 className="flex flex-col items-center text-center w-full min-h-screen justify-center"
 
@@ -16,7 +20,14 @@ function Home() {
 
 
                 <div className="w-32 h-32 mb-10 flex items-center justify-center">
-                    <motion.img
+                      <CircularText
+                text="PERSONAL*EXPENSES*TRACKER*"
+                onHover="speedUp"
+                spinDuration={20}
+                className="custom-class"
+            />
+
+                    {/* <motion.img
                         src={logo1}
                         alt="logo"
                         animate={{ rotate: 360 }}
@@ -26,7 +37,7 @@ function Home() {
                             ease: "linear"
                         }}
                         className="w-full h-full cursor-pointer shadow-blue-300 shadow-md object-cover rounded-full"
-                    />
+                    /> */}
                 </div>
 
 

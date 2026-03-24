@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ExpenseContext } from "../context/ExpenseContext";
 
 
+
 function Navbar() {
 
     const { user, Setshowlogin, logout } = useContext(ExpenseContext)
@@ -20,6 +21,7 @@ function Navbar() {
 
 
             <div>
+             
                 <h1 className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => navigate("/")}>Personal Tracker</h1>
             </div>
 
