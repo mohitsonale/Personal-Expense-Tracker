@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [state, Setstate] = useState("Sign up");
-    const { Setshowlogin, backendurl, Settoken, Setuser, Settransaction, loadUserTransactions } = useContext(ExpenseContext);
+    const { Setshowlogin, backendurl, Settoken, Setuser } = useContext(ExpenseContext);
     const [name, Setname] = useState("");
     const [email, Setemail] = useState("");
     const [password, Setpassword] = useState("");
@@ -22,8 +22,6 @@ function Login() {
                 if (data.success) {
                     Settoken(data.token);
                     Setuser(data.user || { name });
-                    // loadUserTransactions(data.user._id);  // Load new user's transactions
-                    // Settransaction([]);                 // Clear UI temporarily
                     localStorage.setItem("token", data.token);
                     Setshowlogin(false);
                     navigate("/");
@@ -37,8 +35,6 @@ function Login() {
                 if (data.success) {
                     Settoken(data.token);
                     Setuser(data.user);
-                    // loadUserTransactions(data.user._id);  // Load current user's transactions
-                    // Settransaction([]);                 // Clear UI temporarily
                     localStorage.setItem("token", data.token);
                     Setshowlogin(false);
                     navigate("/");

@@ -15,7 +15,7 @@ function ExpenseProvider({ children }) {
 
     const backendurl = import.meta.env.VITE_BACKEND_URL;
 
-    // ------------------ API CALLS ------------------
+  
     const getuserdata = async () => {
         try {
             let { data } = await axios.get(`${backendurl}/api/user/userdata`, {
@@ -24,7 +24,7 @@ function ExpenseProvider({ children }) {
 
             if (data.success) {
                 Setuser(data.user);
-                loadUserTransactions(data.user._id); // load transactions for this user
+                loadUserTransactions(data.user._id);
             } else {
                 toast.error(data.message);
             }
@@ -54,7 +54,7 @@ function ExpenseProvider({ children }) {
         else Setshowlogin(false);
     }, [token]);
 
-    // ------------------ TRANSACTION HANDLERS ------------------
+
     const loadUserTransactions = (userId) => {
         if (!userId) {
             Settransaction([]);
@@ -115,13 +115,13 @@ function ExpenseProvider({ children }) {
         localStorage.removeItem("token");
         Settoken("");
         Setuser(null);
-        Settransaction([]); // only clear in-memory
+        Settransaction([]);
         Setshowlogin(true);
         navigate("/");
         toast.success("Logged out successfully");
     };
 
-    // ------------------ CALCULATIONS ------------------
+
     const totalIncome = transaction
         .filter(t => t.type === "income" || !t.type)
         .reduce((acc, t) => acc + t.amount, 0);
@@ -132,7 +132,7 @@ function ExpenseProvider({ children }) {
 
     const totalBalance = totalIncome - totalExpense;
 
-    // ------------------ CONTEXT VALUE ------------------
+
     const value = {
         transaction,
         addTransaction,
