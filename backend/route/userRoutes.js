@@ -1,5 +1,5 @@
 import express from 'express'
-import getUserdata from '../Controller/Usercontroller.js';
+import getUserdata from '../Controller/userController.js';
 import authMiddleware from '../Middleware/auth.js';
 
 let userrouter=express.Router();
