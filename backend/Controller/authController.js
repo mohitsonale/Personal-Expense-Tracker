@@ -38,17 +38,17 @@ let registeruser = async (req, res) => {
 
         console.log("BEFORE SAVE");
         await newuser.save();
-        console.log("AFTER SAVE ✅");
-        let token = jwt.sign({ id: newuser._id }, process.env.JWT_SECRET, { expiresIn: '7d' })
+        console.log("AFTER SAVE ");
+        let token = jwt.sign({ id: newuser._id }, process.env.JWT_SECRET)
 
         res.json({
             success: true,
             message: "Registration Successfull",
             token,
             user: {
-                _id: user._id,   // ✅ ADD THIS
-                name: user.name,
-                email: user.email
+                _id: newuseruser._id,   
+                name: newuser.name,
+                email: newuser.email
             }
         })
 
@@ -58,7 +58,7 @@ let registeruser = async (req, res) => {
 
     } catch (error) {
 
-        console.log("❌ FULL ERROR:", error);   // 🔥 important
+        console.log("❌ FULL ERROR:", error);   
 
         return res.json({
             success: false,
@@ -92,7 +92,7 @@ let login = async (req, res) => {
             return res.json({ success: false, message: "Invalid Password" })
         }
 
-        let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' })
+        let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
 
         res.json({
             success: true,
