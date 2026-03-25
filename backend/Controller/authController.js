@@ -46,13 +46,13 @@ let registeruser = async (req, res) => {
             message: "Registration Successfull",
             token,
             user: {
-                _id: newuseruser._id,   
+                _id: newuser._id,   
                 name: newuser.name,
                 email: newuser.email
             }
         })
 
-        console.log("RESPONSE SENT ✅");
+        console.log("RESPONSE SENT ");
 
 
 
