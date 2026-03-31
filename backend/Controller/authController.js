@@ -1,10 +1,9 @@
-import crypto, { hash } from "crypto";
 import Usermodel from "../model/Usermodel.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
 import transporter from "../config/nodemailer.js";
-import { a } from "motion/react-client";
+
 
 
 
