@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8888
 let app = express();
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://personal-expense-tracker-1-24ee.onrender.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "token"],
     credentials: true
