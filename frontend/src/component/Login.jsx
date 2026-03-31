@@ -20,15 +20,20 @@ function Login() {
             if (state === "Sign up") {
                 const { data } = await axios.post(`${backendurl}/api/auth/register`, { name, email, password });
                 if (data.success) {
-                    Settoken(data.token);
-                    Setuser(data.user || { name });
-                    localStorage.setItem("token", data.token);
-                    Setshowlogin(false);
-                    navigate("/");
-                    toast.success("Account created successfully");
+                    // Settoken(data.token);
+                    // Setuser(data.user || { name });
+                    // localStorage.setItem("token", data.token);
+                    // Setshowlogin(false);
+                    // navigate("/");
+                    // toast.success("Account created successfully");
+
+                    toast.success("Verification email sent. Please check your inbox 📩");
+                    Setstate("Login"); // go to login mode
                 } else toast.error(data.message);
 
-                console.log("USER:", data.user);
+                console.log("FULL RESPONSE:", data);
+
+            
 
             } else {
                 const { data } = await axios.post(`${backendurl}/api/auth/login`, { email, password });
@@ -36,12 +41,13 @@ function Login() {
                     Settoken(data.token);
                     Setuser(data.user);
                     localStorage.setItem("token", data.token);
+                    localStorage.setItem("user", JSON.stringify(data.user));
                     Setshowlogin(false);
                     navigate("/");
                     toast.success("Login successful");
                 } else toast.error(data.message);
 
-                 console.log("USER:", data.user);
+                console.log("USER:", data.user);
             }
         } catch (error) {
             toast.error(error.message);
@@ -72,22 +78,22 @@ function Login() {
 
                 {state === "Sign up" && (
                     <div className="flex items-center border border-gray-400/10 gap-2 rounded-xl mt-5 px-6 py-1">
-                        <i className="fa-solid fa-user w-5"></i>
+                        <i className="hover:text-blue-700 cursor-pointer fa-solid fa-user w-5"></i>
                         <input onChange={e => Setname(e.target.value)} value={name} type="text" placeholder="Enter your name" required className="outline-none text-sm" />
                     </div>
                 )}
 
                 <div className="flex items-center gap-2 border border-gray-400/10 rounded-xl mt-5 px-6 py-1">
-                    <i className="fa-solid fa-envelope w-5"></i>
+                    <i className="hover:text-blue-700 cursor-pointer fa-solid fa-envelope w-5"></i>
                     <input onChange={e => Setemail(e.target.value)} value={email} type="email" placeholder="Enter your email" required className="outline-none text-sm" />
                 </div>
 
                 <div className="flex items-center border border-gray-400/10 gap-2 rounded-xl mt-5 px-6 py-1">
-                    <i className="fa-solid fa-lock w-5"></i>
+                    <i className="hover:text-blue-700 cursor-pointer fa-solid fa-lock w-5"></i>
                     <input onChange={e => Setpassword(e.target.value)} value={password} type="password" placeholder="Enter your password" required className="outline-none text-sm" />
                 </div>
 
-                <p className="text-sm text-blue-700 cursor-pointer my-2">Forgot password?</p>
+                <p   onClick={() => {Setshowlogin(false);   setTimeout(() => {navigate("/forgot-password"); }, 100); }} className="text-sm text-blue-700 cursor-pointer my-2">Forgot password?</p>
 
                 <button className="w-full rounded-full bg-[#14243c]/8 border border-white/5 font-medium cursor-pointer text-white py-2 mt-2 hover:scale-105 duration-500 transition-all">
                     {state === "Sign up" ? "Create Account" : "Login"}

@@ -30,7 +30,7 @@ function Navbar() {
                 {
                     user && (
                         <div className="sm:hidden">
-                            <button onClick={() => setOpenMenu(!openMenu)}><i className="text-red-500 fa-solid fa-bars w-10"></i> </button>
+                            <button onClick={() => setOpenMenu(!openMenu)}><i className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent fa-solid fa-bars w-10"></i> </button>
 
                         </div>
                     )
@@ -42,7 +42,7 @@ function Navbar() {
 
                             <ul
                                 className={`${openMenu ? "flex" : "hidden"} flex-col sm:flex sm:flex-row gap-4 absolute sm:static top-12 right-0  z-50   
-  bg-[#14243c] sm:bg-transparent p-4 sm:p-0 rounded-lg shadow-lg sm:shadow-none`}
+   bg-[#14243c]/10  sm:bg-transparent p-4 sm:p-0 rounded-lg shadow-lg sm:shadow-none`}
                             >
                                 <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent " onClick={() => { navigate("/dashboard"); setOpenMenu(false); }}>Dashboard</li>
                                 <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => { navigate("/addtransaction"); setOpenMenu(false); }}>Addtransaction</li>
