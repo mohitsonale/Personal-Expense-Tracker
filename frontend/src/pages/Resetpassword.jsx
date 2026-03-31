@@ -13,7 +13,7 @@ function ResetPassword() {
 
     let { Setshowlogin,backendurl } = useContext(ExpenseContext);
 
-    cossole.log("BACKEND URL:", backendurl);
+    console.log("BACKEND URL:", backendurl);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
