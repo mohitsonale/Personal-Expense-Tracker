@@ -14,6 +14,7 @@ function ForgotPassword() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+         console.log("BUTTON CLICKED 🔥");
 
         try {
             const { data } = await axios.post(`${backendurl}/api/auth/send-otp`, { email });
