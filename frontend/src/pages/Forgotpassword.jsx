@@ -15,13 +15,26 @@ function ForgotPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const { data } = await axios.post(`${backendurl}/api/auth/send-otp`, { email });
+        try {
+            const { data } = await axios.post(`${backendurl}/api/auth/send-otp`, { email });
 
         if (data.success) {
-            toast.success("OTP sent to email 📩");
+            toast.success("OTP sent to email");
+            setTimeout(() => {
+                navigate("/reset-password");    
+                
+            },1000);
         } else {
             toast.error(data.message);
         }
+            
+        } catch (error) {
+
+            toast.error("Error sending OTP");
+            
+        }
+
+        
     };
 
     
@@ -44,7 +57,7 @@ function ForgotPassword() {
                 <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" className="outline-none text-md" />
                 </div>
 
-                <button onClick={() => navigate("/reset-password")} className="w-full rounded-full bg-[#14243c]/8 border border-white/5 font-medium cursor-pointer text-white py-2 mt-4 hover:scale-105 duration-500 transition-all" type="submit">SEND OTP</button>
+                <button  className="w-full rounded-full bg-[#14243c]/8 border border-white/5 font-medium cursor-pointer text-white py-2 mt-4 hover:scale-105 duration-500 transition-all" type="submit">SEND OTP</button>
                 <i onClick={() => navigate("/")} className="absolute top-5 text-red-500 right-5 hover:rotate-90 cursor-pointer transition-transform duration-300 fa-solid fa-x"></i>
             </motion.form>
         </div>
