@@ -226,7 +226,7 @@ let sendOTP=async(req,res)=>{
         })
         
     } catch (error) {
-        console.log("ERROR:", error.message);
+        console.log("SEND OTP ERROR:", error);
         res.json({
             success:false,
             message:"Error sending OTP",
