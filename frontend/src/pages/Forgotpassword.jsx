@@ -17,7 +17,7 @@ function ForgotPassword() {
 
         try {
             const { data } = await axios.post(`${backendurl}/api/auth/send-otp`, { email });
-
+            console.log("RESPONSE:", data);
         if (data.success) {
             toast.success("OTP sent to email");
             setTimeout(() => {
