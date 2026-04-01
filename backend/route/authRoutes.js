@@ -1,7 +1,7 @@
 import express from "express"
-import { isAuthenticated, login, registeruser, verifyEmail } from "../Controller/authController.js";
+import { isAuthenticated, login, registeruser, verifyEmail,sendOTP,verifyOTPandResetPassword } from "../Controller/authController.js";
 import authMiddleware from "../Middleware/auth.js";
-import { sendOTP, verifyOTPandResetPassword } from "../Controller/authController.js";
+
 
 let authrouter=express.Router();
 
