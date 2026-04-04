@@ -14,7 +14,7 @@ function ExpenseProvider({ children }) {
     const [transaction, Settransaction] = useState([]);
 
     const backendurl = import.meta.env.VITE_BACKEND_URL;
-    console.log("BACKEND URL:", backendurl);
+
 
   
     const getuserdata = async () => {
