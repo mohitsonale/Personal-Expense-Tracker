@@ -212,11 +212,7 @@ let sendOTP=async(req,res)=>{
             from: process.env.SMTP_USER,
             to:email,
             subject:"Password Reset OTP",
-            html:`
-            <h2>Password Reset OTP</h2>
-            <p>Your OTP for password reset is</p>
-            <p style="font-size: 18px;color:blue">${otp}</p>
-            `
+           text: `Your OTP is ${otp}`,
 
         })
 
