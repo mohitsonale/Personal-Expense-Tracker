@@ -3,7 +3,7 @@ dotenv.config();
 import nodemailer from "nodemailer";
 
 let transporter = nodemailer.createTransport({
-  host:"smtp.gmail.com",
+  host:"smtp-relay.brevo.com",
   port:587,
   secure:false,
   auth: {
