@@ -21,7 +21,14 @@ app.use(cors({
 }))
 
 app.use(express.json());
-await connectDB();
+
+// await connectDB();
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`);
+  });
+});
 
 app.get("/", (req, res) => {
     res.send("PERSONAL EXPENSES TRACKER")
@@ -36,5 +43,5 @@ app.use('/api/auth', authrouter);
 app.use('/api/user', userrouter);
 app.use("/api/auth/register", registerLimiter);
 
-app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
+// app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
 
