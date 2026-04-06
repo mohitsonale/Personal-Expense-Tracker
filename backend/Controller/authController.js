@@ -209,7 +209,7 @@ let sendOTP=async(req,res)=>{
         await user.save();
 
         await transporter.sendMail({
-            from: process.env.SMTP_USER,
+            from:`"Expense Tracker" <zoroluffysanji07@gmail.com>`,
             to:email,
             subject:"Password Reset OTP",
            text: `Your OTP is ${otp}`,
