@@ -2,7 +2,7 @@ import Usermodel from "../model/Usermodel.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
-import transporter from "../config/nodemailer.js";
+import tranEmailApi from "../config/brevo.js";
 
 
 
@@ -41,7 +41,7 @@ let registeruser = async (req, res) => {
         let salt = await bcrypt.genSalt(10);
         let hashpassword = await bcrypt.hash(password, salt);
 
-      
+
 
 
         // await newuser.save();
@@ -50,19 +50,17 @@ let registeruser = async (req, res) => {
         const token = jwt.sign({ name, email, password: hashpassword }, process.env.JWT_SECRET, { expiresIn: "1h" }
         );
 
-        const verifyLink = `http://localhost:5173/verify/${token}`;
+        const verifyLink = `https://personal-expense-tracker-1-24ee.onrender.com/verify/${token}`;
 
-        await transporter.sendMail({
-            from: process.env.SMTP_USER,
-            to: email,
+        await tranEmailApi.sendTransacEmail({
+            sender: { email: "zoroluffysanji07@gmail.com", name: "Expense Tracker" },
+            to: [{ email: email }],
             subject: "Verify Your Email",
-            html: `
-            <h2>Welcome ${name} to our platform!</h2>
-            <p>We're glad to have you on board. Your account has been successfully created with the email id: ${email}.</p>
-                 <h2>Email Verification</h2>
-                 <p>Click below link to verify:</p>
-                  <a href="${verifyLink}">Verify Email</a>
-                 `
+            htmlContent: `
+    <h2>Welcome ${name} to our platform!</h2>
+    <p>Your account email: ${email}</p>
+    <p>Click below to verify:</p>
+    <a href="${verifyLink}">Verify Email</a>`,
         });
         console.log("Mail sent successfully to:", email);
 
@@ -70,7 +68,7 @@ let registeruser = async (req, res) => {
             success: true,
             message: "Verification email sent. Please check your inbox"
         });
-     
+
 
 
 
@@ -152,13 +150,13 @@ let verifyEmail = async (req, res) => {
         console.log("DECODED:", decoded);
         const { name, email, password } = decoded;
 
-      
+
         const existingUser = await Usermodel.findOne({ email });
         if (existingUser) {
             return res.send("User already exists");
         }
 
-       
+
         const user = new Usermodel({
             name,
             email,
@@ -177,113 +175,112 @@ let verifyEmail = async (req, res) => {
     }
 };
 
-let sendOTP=async(req,res)=>{
+let sendOTP = async (req, res) => {
 
     try {
 
-        let {email}=req.body;
+        let { email } = req.body;
 
-        if(!email){
+        if (!email) {
             return res.json({
-                success:false,
-                message:"Email is required"
+                success: false,
+                message: "Email is required"
 
             })
         }
-        
-        let user=await Usermodel.findOne({email});
 
-        if(!user){
+        let user = await Usermodel.findOne({ email });
+
+        if (!user) {
             return res.json({
-                success:false,
-                message:"User not found"
+                success: false,
+                message: "User not found"
             })
         }
 
-        let otp=Math.floor(100000+Math.random()*900000).toString();
-        let otpExpiry=new Date(Date.now()+10*60*1000);
+        let otp = Math.floor(100000 + Math.random() * 900000).toString();
+        let otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
 
-        user.otp=otp;
-        user.otpExpiry=otpExpiry;
+        user.otp = otp;
+        user.otpExpiry = otpExpiry;
 
         await user.save();
 
-        await transporter.sendMail({
-            from:`"Expense Tracker" <zoroluffysanji07@gmail.com>`,
-            to:email,
-            subject:"Password Reset OTP",
-           text: `Your OTP is ${otp}`,
-
-        })
+        await tranEmailApi.sendTransacEmail({
+            sender: { email: "zoroluffysanji07@gmail.com", name: "Expense Tracker" },
+            to: [{ email: email }],
+            subject: "Password Reset OTP",
+            textContent: `Your OTP is ${otp}`,
+        });
 
         res.json({
-            success:true,
-            message:"OTP sent to email. Please check your inbox"
+            success: true,
+            message: "OTP sent to email. Please check your inbox"
         })
-        
+
     } catch (error) {
         console.log("SEND OTP ERROR:", error);
         res.json({
-            success:false,
-            message:"Error sending OTP",
-            error:error.message
+            success: false,
+            message: "Error sending OTP",
+            error: error.message
         })
-        
+
     }
 }
 
-let verifyOTPandResetPassword=async(req,res)=>{
+let verifyOTPandResetPassword = async (req, res) => {
 
     try {
-        
-        let{email,otp,password}=req.body;
 
-        if(!email || !otp || !password){
+        let { email, otp, password } = req.body;
+
+        if (!email || !otp || !password) {
             return res.json({
-                success:false,
-                message:"All fields are required"
+                success: false,
+                message: "All fields are required"
             })
         }
 
-        let user=await Usermodel.findOne({email});
+        let user = await Usermodel.findOne({ email });
 
-        if(!user){
-            return res.json({  
-                success:false,
-                message:"User not found"
-            })      
-        }
-
-        if(user.otp!==otp || user.otpExpiry<Date.now()){
+        if (!user) {
             return res.json({
-                success:false,
-                message:"Invalid or expired OTP"
+                success: false,
+                message: "User not found"
             })
         }
 
-        const salt=await bcrypt.genSalt(10);
-        const hashpassword=await bcrypt.hash(password,salt);
+        if (user.otp !== otp || user.otpExpiry < Date.now()) {
+            return res.json({
+                success: false,
+                message: "Invalid or expired OTP"
+            })
+        }
 
-        user.password=hashpassword;
-        user.otp=null;
-        user.otpExpiry=null;
+        const salt = await bcrypt.genSalt(10);
+        const hashpassword = await bcrypt.hash(password, salt);
+
+        user.password = hashpassword;
+        user.otp = null;
+        user.otpExpiry = null;
 
         await user.save();
 
         res.json({
-            success:true,
-            message:"Password reset successful"
+            success: true,
+            message: "Password reset successful"
         })
 
-        
+
     } catch (error) {
 
         res.json({
-            success:false,
-            message:"Error resetting password",
-            error:error.message
+            success: false,
+            message: "Error resetting password",
+            error: error.message
         })
-        
+
     }
 }
 
