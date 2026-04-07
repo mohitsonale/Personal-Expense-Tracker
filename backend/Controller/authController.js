@@ -53,15 +53,15 @@ let registeruser = async (req, res) => {
         const verifyLink = `https://personal-expense-tracker-1-24ee.onrender.com/verify/${token}`;
 
         await resend.emails.send({
-  from: "onboarding@resend.dev",
-  to: email,
-  subject: "Verify Your Email",
-  html: `
+            from: "onboarding@resend.dev",
+            to: email,
+            subject: "Verify Your Email",
+            html: `
     <h2>Welcome ${name}</h2>
     <p>Click below to verify:</p>
     <a href="${verifyLink}">Verify Email</a>
   `,
-});
+        });
         console.log("Mail sent successfully to:", email);
 
         return res.json({
