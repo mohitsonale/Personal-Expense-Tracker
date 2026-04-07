@@ -2,7 +2,7 @@ import Usermodel from "../model/Usermodel.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
-import tranEmailApi from "../config/brevo.js";
+import resend from "../config/resend.js";
 
 
 
@@ -52,16 +52,16 @@ let registeruser = async (req, res) => {
 
         const verifyLink = `https://personal-expense-tracker-1-24ee.onrender.com/verify/${token}`;
 
-        await tranEmailApi.sendTransacEmail({
-            sender: { email: "zoroluffysanji07@gmail.com", name: "Expense Tracker" },
-            to: [{ email: email }],
-            subject: "Verify Your Email",
-            htmlContent: `
-    <h2>Welcome ${name} to our platform!</h2>
-    <p>Your account email: ${email}</p>
+        await resend.emails.send({
+  from: "onboarding@resend.dev",
+  to: email,
+  subject: "Verify Your Email",
+  html: `
+    <h2>Welcome ${name}</h2>
     <p>Click below to verify:</p>
-    <a href="${verifyLink}">Verify Email</a>`,
-        });
+    <a href="${verifyLink}">Verify Email</a>
+  `,
+});
         console.log("Mail sent successfully to:", email);
 
         return res.json({
@@ -144,10 +144,9 @@ let isAuthenticated = async (req, res) => {
 
 let verifyEmail = async (req, res) => {
     try {
-        console.log("VERIFY API HIT");
-        console.log("TOKEN:", req.params.token);
+
         const decoded = jwt.verify(req.params.token, process.env.JWT_SECRET);
-        console.log("DECODED:", decoded);
+
         const { name, email, password } = decoded;
 
 
@@ -206,11 +205,11 @@ let sendOTP = async (req, res) => {
 
         await user.save();
 
-        await tranEmailApi.sendTransacEmail({
-            sender: { email: "zoroluffysanji07@gmail.com", name: "Expense Tracker" },
-            to: [{ email: email }],
+        await resend.emails.send({
+            from: "onboarding@resend.dev",
+            to: email,
             subject: "Password Reset OTP",
-            textContent: `Your OTP is ${otp}`,
+            text: `Your OTP is ${otp}`,
         });
 
         res.json({
