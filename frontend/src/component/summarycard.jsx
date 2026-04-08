@@ -25,13 +25,13 @@ function Summarycard() {
 
             </div>
 
-            <div>
+            <div className="max-h-[260px] overflow-y-auto pr-1 mt-2 space-y-3 custom-scroll" >
                 {
 
                     Array.isArray(transaction) &&
                     [...transaction].reverse().map((item) => (
 
-                        <div key={item.id} className="relative grid text-sm sm:text-xl  grid-cols-4 bg-[#14243c]/10 border border-white/5 shadow-2xl rounded-xl   py-2  my-4  items-center">
+                        <div key={item.id} className="relative grid grid-cols-4 items-center text-xs sm:text-lg bg-[#14243c]/10 border border-white/5 rounded-md sm:rounded-xl cursor-pointer  px-0.2 py-2 sm:py-3 hover:bg-[#14243c]/30 transition duration-200">
                             <div className="text-[11px] sm:text-xl">{item.date}</div>
                             <div className="text-sm sm:text-xl">{item.description}</div>
                             <div className="text-sm sm:text-xl">{item.category}</div>
@@ -58,7 +58,11 @@ function Summarycard() {
             </div>
 
 
-
+            {(!transaction || transaction.length === 0) && (
+                <p className="text-center text-gray-400 mt-6">
+                    No transactions available.
+                </p>
+            )}
 
         </div>
     )
