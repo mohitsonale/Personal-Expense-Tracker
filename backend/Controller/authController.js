@@ -57,7 +57,7 @@ let registeruser = async (req, res) => {
             to: email,
             subject: "Verify Your Email",
             html: `
-    <h2>Welcome ${name}</h2>
+    <h2>Welcome ${name} to our app.</h2>
     <p>Click below to verify:</p>
     <a href="${verifyLink}">Verify Email</a>
   `,
@@ -209,7 +209,37 @@ let sendOTP = async (req, res) => {
             from: "Expense Tracker <noreply@fintracko.online>",
             to: email,
             subject: "Password Reset OTP",
-            text: `Your OTP is ${otp}`,
+            html: `
+    <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+        <div style="max-width: 500px; margin: auto; background: #ffffff; padding: 20px; border-radius: 10px; text-align: center;">
+
+            <h2 style="color: #333;">Password Reset Request</h2>
+
+            <p style="color: #555; font-size: 14px;">
+                We received a request to reset your password. Use the OTP below to proceed:
+            </p>
+
+            <h1 style="color: #007BFF; letter-spacing: 3px; margin: 20px 0;">
+                ${otp}
+            </h1>
+
+            <p style="color: #777; font-size: 13px;">
+                This OTP is valid for a limited time. Please do not share it with anyone.
+            </p>
+
+            <p style="color: #777; font-size: 13px;">
+                If you did not request this, you can safely ignore this email.
+            </p>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
+
+            <p style="color: #aaa; font-size: 12px;">
+                © 2026 fintracko.online. All rights reserved.
+            </p>
+
+        </div>
+    </div>
+    `
         });
 
         res.json({
