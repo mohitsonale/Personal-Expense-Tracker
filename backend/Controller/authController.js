@@ -216,7 +216,7 @@ let sendOTP = async (req, res) => {
             <h2 style="color: #333;">Password Reset Request</h2>
 
             <p style="color: #555; font-size: 14px;">
-                We received a request to reset your password. Use the OTP below to proceed:
+                We received a request to reset your account password. Please use the One-Time Password (OTP) below to proceed with resetting your password:
             </p>
 
             <h1 style="color: #007BFF; letter-spacing: 3px; margin: 20px 0;">
@@ -224,7 +224,7 @@ let sendOTP = async (req, res) => {
             </h1>
 
             <p style="color: #777; font-size: 13px;">
-                This OTP is valid for a limited time. Please do not share it with anyone.
+                This OTP is valid for a limited time. Please do not share it with anyone for security reasons.
             </p>
 
             <p style="color: #777; font-size: 13px;">
@@ -235,6 +235,10 @@ let sendOTP = async (req, res) => {
 
             <p style="color: #aaa; font-size: 12px;">
                 © 2026 fintracko.online. All rights reserved.
+            </p>
+
+             <p style="color: #777; font-size: 13px; font-style:bold;">
+                Thank you for using our service.
             </p>
 
         </div>
