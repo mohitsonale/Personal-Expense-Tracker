@@ -56,11 +56,44 @@ let registeruser = async (req, res) => {
             from: "Expense Tracker <noreply@fintracko.online>",
             to: email,
             subject: "Verify Your Email",
-            html: `
-    <h2>Welcome ${name} to our app.</h2>
-    <p>Click below to verify:</p>
-    <a href="${verifyLink}">Verify Email</a>
-  `,
+          html: `
+    <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 40px 20px;">
+        <div style="max-width: 600px; margin: auto; background: #ffffff; padding: 40px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+
+            <h1 style="color: #333; font-size: 28px; margin-bottom: 10px;">
+                Welcome, ${name} 👋
+            </h1>
+
+            <p style="color: #555; font-size: 16px; margin-bottom: 25px;">
+                Thank you for signing up! Please verify your email address to activate your account and get started.
+            </p>
+
+            <a href="${verifyLink}" 
+               style="display: inline-block; padding: 14px 28px; font-size: 16px; color: #ffffff; background-color: #007BFF; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                Verify Email
+            </a>
+
+            <p style="color: #777; font-size: 14px; margin-top: 25px;">
+                This verification link will expire shortly for security reasons.
+            </p>
+
+            <p style="color: #777; font-size: 14px;">
+                If you did not create this account, you can safely ignore this email.
+            </p>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
+
+            <p style="color: #aaa; font-size: 12px;">
+                Need help? Contact our support team anytime.
+            </p>
+
+            <p style="color: #aaa; font-size: 12px;">
+                © 2026 fintracko.online. All rights reserved.
+            </p>
+
+        </div>
+    </div>
+    `
         });
         console.log("Mail sent successfully to:", email);
 
