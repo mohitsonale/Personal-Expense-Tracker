@@ -16,13 +16,13 @@ function Navbar() {
 
 
 
-
-        <div className="flex relative z-50  justify-between w-full  items-center bg-[#14243c]/20 border border-white/5   p-2 sm:p-3 outline-none selection:text-green-300 selection:bg-black  text-sm sm:text-2xl cursor-pointer  font-extrabold">
+        
+        <div className="flex relative z-50  justify-between w-full  items-center     p-2 sm:p-3 outline-none selection:text-green-300 selection:bg-black  text-sm sm:text-2xl cursor-pointer  font-extrabold">
 
 
             <div>
              
-                <h1 className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => navigate("/")}>Personal Tracker</h1>
+                <h1 className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => navigate("/")}>Fintracko</h1>
             </div>
 
             <div className="flex items-center gap-3 relative">
