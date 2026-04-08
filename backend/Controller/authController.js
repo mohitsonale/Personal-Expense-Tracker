@@ -53,7 +53,7 @@ let registeruser = async (req, res) => {
         const verifyLink = `https://personal-expense-tracker-1-24ee.onrender.com/verify/${token}`;
 
         await resend.emails.send({
-            from: "onboarding@resend.dev",
+            from: "Expense Tracker <noreply@fintracko.online>",
             to: email,
             subject: "Verify Your Email",
             html: `
@@ -206,7 +206,7 @@ let sendOTP = async (req, res) => {
         await user.save();
 
         await resend.emails.send({
-            from: "onboarding@resend.dev",
+            from: "Expense Tracker <noreply@fintracko.online>",
             to: email,
             subject: "Password Reset OTP",
             text: `Your OTP is ${otp}`,
