@@ -44,7 +44,7 @@ function Navbar() {
                                 className={`${openMenu ? "flex" : "hidden"} flex-col sm:flex sm:flex-row gap-4 absolute sm:static top-12 right-0  z-50   
    bg-[#14243c]/10  sm:bg-transparent p-4 sm:p-0 rounded-lg shadow-lg sm:shadow-none`}
                             >
-                                <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent " onClick={() => { navigate("/dashboard"); setOpenMenu(false); }}>Overview</li>
+                                <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent " onClick={() => { navigate("/dashboard"); setOpenMenu(false); }}>Dashboard</li>
                                 <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => { navigate("/addtransaction"); setOpenMenu(false); }}>Add Expense</li>
                                 <li onClick={logout} className=" text-red-600"   >Logout:{user.name}</li>
 
