@@ -15,16 +15,16 @@ function ExpenseProvider({ children }) {
 
     const backendurl = import.meta.env.VITE_BACKEND_URL;
 
-    const [darkMode, SetdarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "true";
-});
+//     const [darkMode, SetdarkMode] = useState(() => {
+//     return localStorage.getItem("theme") === "true";
+// });
 
   
 
-    useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("theme", darkMode);
-}, [darkMode]);
+//     useEffect(() => {
+//     document.documentElement.classList.toggle("dark", darkMode);
+//     localStorage.setItem("theme", darkMode);
+// }, [darkMode]);
 
 
 
@@ -167,8 +167,7 @@ function ExpenseProvider({ children }) {
         Setuser,
         getuserdata,
         logout,
-        darkMode,
-        SetdarkMode
+      
 
     };
 

@@ -14,13 +14,12 @@ import ResetPassword from "./pages/Resetpassword";
 
 function App() {
 
-  const { showlogin,darkMode } = useContext(ExpenseContext)
+  const { showlogin } = useContext(ExpenseContext)
 
   return (
     <div className={ "relative min-h-screen w-full bg-black transition-colors duration-500 overflow-hidden"}>
 {/* "relative min-h-screen w-full bg-[#cbb89d]/50 transition-colors duration-500 overflow-hidden" */}
-    {
-      darkMode &&
+   
         <div className="absolute inset-0 z-0 pointer-events-none">
          
         <LightRays
@@ -40,8 +39,7 @@ function App() {
           />
       </div>
     
-  }
-
+  
       <ToastContainer />
       <Navbar className="relative z-10 " />
       {

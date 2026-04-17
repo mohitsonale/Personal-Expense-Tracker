@@ -6,7 +6,7 @@ import { ExpenseContext } from "../context/ExpenseContext";
 
 function Navbar() {
 
-    const { user, Setshowlogin, logout, darkMode, SetdarkMode } = useContext(ExpenseContext)
+    const { user, Setshowlogin, logout } = useContext(ExpenseContext)
 
     const navigate = useNavigate()
     const [openMenu, setOpenMenu] = useState(false);
