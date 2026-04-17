@@ -25,7 +25,7 @@ function App() {
          
         <LightRays
           raysOrigin="top-center"
-          raysColor={darkMode ? "#ffffff" : "#0f172a"} 
+          raysColor= "#ffffff" 
           raysSpeed={1}
           lightSpread={1}
           rayLength={6}
