@@ -6,7 +6,7 @@ import { ExpenseContext } from "../context/ExpenseContext";
 
 function Navbar() {
 
-    const { user, Setshowlogin, logout } = useContext(ExpenseContext)
+    const { user, Setshowlogin, logout, darkMode, SetdarkMode } = useContext(ExpenseContext)
 
     const navigate = useNavigate()
     const [openMenu, setOpenMenu] = useState(false);
@@ -14,14 +14,15 @@ function Navbar() {
     return (
 
 
+      <div className="fixed z-100 w-full">
 
 
-        
-        <div className="flex relative z-50  justify-between w-full  items-center     p-2 sm:p-3 outline-none selection:text-green-300 selection:bg-black  text-sm sm:text-2xl cursor-pointer  font-extrabold">
+
+        <div className="flex relative   dark:bg-[#14243c]/8 border border-gray-200 dark:border-white/5  items-center cursor-pointer  justify-between w-full  text-black  dark:text-white  p-2 sm:p-3 text-sm sm:text-2xl font-extrabold transition-colors duration-500">
 
 
             <div>
-             
+
                 <h1 className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => navigate("/")}>Fintracko</h1>
             </div>
 
@@ -38,12 +39,12 @@ function Navbar() {
 
                 {
                     user ?
-                        <div className="flex">
+                    <div className="flex">
 
                             <ul
                                 className={`${openMenu ? "flex" : "hidden"} flex-col sm:flex sm:flex-row gap-4 absolute sm:static top-12 right-0  z-50   
-   bg-[#14243c]/10  sm:bg-transparent p-4 sm:p-0 rounded-lg shadow-lg sm:shadow-none`}
-                            >
+                                bg-[#14243c]/10  sm:bg-transparent p-4 sm:p-0 rounded-lg shadow-lg sm:shadow-none`}
+                                >
                                 <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent " onClick={() => { navigate("/dashboard"); setOpenMenu(false); }}>Dashboard</li>
                                 <li className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => { navigate("/addtransaction"); setOpenMenu(false); }}>Add Expense</li>
                                 <li onClick={logout} className=" text-red-600"   >Logout:{user.name}</li>
@@ -53,14 +54,21 @@ function Navbar() {
 
                         </div>
 
-                        :
+:
 
-                        <div>
+<div>
                             <h1 className="bg-gradient-to-br from-blue-200/70 to-cyan-900/70  bg-clip-text text-transparent" onClick={() => Setshowlogin(true)}>Sign up</h1>
                         </div>
 
 
-                }
+}
+{/* 
+                <button onClick={() => SetdarkMode(!darkMode)}>
+                    <i
+                        className={`fa-solid ${darkMode ? "fa-sun text-yellow-400" : "fa-moon text-blue-400"
+                        } text-xl sm:text-2xl hover:rotate-90 cursor-pointer transition-all duration-500`}
+                        ></i>
+                </button> */}
 
 
 
@@ -71,6 +79,7 @@ function Navbar() {
 
 
         </div>
+                        </div>
 
     )
 }

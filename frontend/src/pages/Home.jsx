@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import logo1 from "../assets/logo1.png";
 import TextType from "../../animation/TextType";
 import CircularText from "../../animation/CircularText";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+
+    const navigate=useNavigate()
     return (
         <div>
 
@@ -11,7 +14,7 @@ function Home() {
 
           
             <motion.div
-                className="flex flex-col items-center text-center w-full min-h-screen justify-center"
+                className="flex flex-col  items-center text-center w-full min-h-screen justify-center"
 
                 initial={{ opacity: 0.2, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -27,17 +30,6 @@ function Home() {
                 className="custom-class"
             />
 
-                    {/* <motion.img
-                        src={logo1}
-                        alt="logo"
-                        animate={{ rotate: 360 }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 3,
-                            ease: "linear"
-                        }}
-                        className="w-full h-full cursor-pointer shadow-blue-300 shadow-md object-cover rounded-full"
-                    /> */}
                 </div>
 
 
@@ -59,6 +51,17 @@ function Home() {
                         showCursor
                     />
                 </p>
+             
+
+                 {/* <button
+                    onClick={() => navigate("/dashboard")}
+                    className="mt-8 px-6 py-3 rounded-xl 
+                    bg-blue-900 hover:bg-blue-800 
+                    text-white font-medium 
+                    transition duration-300 hover:scale-105 shadow-lg"
+                >
+                    Get Started 🚀
+                </button> */}
 
             </motion.div>
 

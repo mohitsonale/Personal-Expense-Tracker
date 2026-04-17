@@ -14,10 +14,23 @@ function ExpenseProvider({ children }) {
     const [transaction, Settransaction] = useState([]);
 
     const backendurl = import.meta.env.VITE_BACKEND_URL;
-    console.log("BACKEND URL:", backendurl);
 
+    const [darkMode, SetdarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "true";
+});
 
   
+
+    useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode);
+}, [darkMode]);
+
+
+
+
+
+
     const getuserdata = async () => {
         try {
             let { data } = await axios.get(`${backendurl}/api/user/userdata`, {
@@ -69,12 +82,12 @@ function ExpenseProvider({ children }) {
     };
 
     const addTransaction = (newTransaction) => {
-        
-        
+
+
         Settransaction(prev => {
             const updated = [...prev, newTransaction];
-            
-            if(user?._id){
+
+            if (user?._id) {
 
                 const userKey = `transaction_${user._id}`;
                 localStorage.setItem(userKey, JSON.stringify(updated));
@@ -93,10 +106,10 @@ function ExpenseProvider({ children }) {
         Settransaction(prev => {
             const updated = prev.filter(t => t.id !== id);
 
-           
-                const userKey = `transaction_${user._id}`;
-                localStorage.setItem(userKey, JSON.stringify(updated));
-          
+
+            const userKey = `transaction_${user._id}`;
+            localStorage.setItem(userKey, JSON.stringify(updated));
+
 
             return updated;
         });
@@ -153,7 +166,10 @@ function ExpenseProvider({ children }) {
         user,
         Setuser,
         getuserdata,
-        logout
+        logout,
+        darkMode,
+        SetdarkMode
+
     };
 
     return (

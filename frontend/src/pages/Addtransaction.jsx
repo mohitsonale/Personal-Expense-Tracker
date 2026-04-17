@@ -47,7 +47,7 @@ function Addtransaction() {
 
     return (
 
-        <motion.div className="flex justify-center items-center "
+        <motion.div className="flex justify-center mt-12 items-center min-h-[80vh] px-2"
 
             initial={{ opacity: 0.2, y: 100 }}
             transition={{ duration: 1.5 }}
@@ -55,7 +55,7 @@ function Addtransaction() {
             viewport={true}
         >
 
-            <form onSubmit={handleSubmit} className="relative  px-10 py-8   mt-12 sm:mt-15 bg-[#14243c]/8 border border-white/5 rounded-2xl  text-white shadow-2xl   " >
+            <form onSubmit={handleSubmit} className="relative   px-10 py-8   mt-12 sm:mt-15 bg-white text-black dark:bg-[#14243c]/8 border border-gray-200 dark:border-white/5 rounded-2xl  dark:text-white shadow-2xl transition-colors duration-500   " >
 
                 <h1 className="text-center font-medium text-3xl mb-5 text-blue-500">New Transaction</h1>
 
@@ -63,7 +63,7 @@ function Addtransaction() {
 
 
                     <h2 className="mb-1 text-xl text-cyan-300">Amount</h2>
-                    <input type="number" name="amount" value={formData.amount} onChange={handlechange} placeholder="0.00" required className=" outline-blue-500 text-md sm:text-xl  text-blue-300 text-shadow-md border rounded-md border-gray-400 px-8 py-2" />
+                    <input type="number" name="amount" value={formData.amount} onChange={handlechange} placeholder="0.00" required className=" outline-blue-500 text-md sm:text-xl    dark:text-blue-300 text-shadow-md  rounded-md border border-gray-300 dark:border-white/10  px-8 py-2" />
 
 
 
@@ -73,8 +73,8 @@ function Addtransaction() {
                 <div className="mb-3">
 
 
-                    <h2 className="mb-1 text-xl text-cyan-300">Describetion</h2>
-                    <input type="text" name="description" value={formData.description} onChange={handlechange} placeholder="e.g.  Weekly Grocery" required className="outline-blue-500 text-blue-300  text-md sm:text-xl  text-shadow-md border rounded-md border-gray-400 px-8 py-2" />
+                    <h2 className="mb-1 text-xl text-cyan-300">Description</h2>
+                    <input  type="text" name="description" value={formData.description} onChange={handlechange} placeholder="e.g.  Weekly Grocery" required className="outline-blue-500 text-md sm:text-xl    dark:text-blue-300 text-shadow-md  rounded-md border border-gray-300 dark:border-white/10  px-8 py-2" />
 
 
 
@@ -85,7 +85,7 @@ function Addtransaction() {
 
                     <div className="mb-3">
                         <h2 className="mb-1 text-xl text-cyan-300">Type</h2>
-                        <select name="type" value={formData.type} onChange={handlechange} className="outline-blue-500  text-md sm:text-xl border border-gray-400 rounded-md text-blue-400 px-8 py-2 "   >
+                        <select name="type" value={formData.type} onChange={handlechange} className="outline-blue-500 text-md sm:text-xl    dark:text-blue-300 text-shadow-md  rounded-md border border-gray-300 dark:border-white/10  px-8 py-2"   >
                             <option value="income">Income</option>
                             <option value="expense">Expenses</option>
 
@@ -94,7 +94,7 @@ function Addtransaction() {
                     <div className="mb-3">
 
                         <h2 className="mb-1 text-xl text-cyan-300">Category</h2>
-                        <select name="category" value={formData.category} onChange={handlechange} className="outline-blue-500  text-md sm:text-xl border text-blue-400 rounded-md border-gray-400  px-2 sm:px-5 py-2 "  >
+                        <select name="category" value={formData.category} onChange={handlechange} className="outline-blue-500 text-md sm:text-xl    dark:text-blue-300 text-shadow-md  rounded-md border border-gray-300 dark:border-white/10  px-8 py-2"  >
                             <option value="">Other</option>
                             <option value="food">Food</option>
                             <option value="travel" >Travel</option>
@@ -112,7 +112,7 @@ function Addtransaction() {
 
                 <div>
                     <h2 className="mb-1 text-xl text-cyan-300">Date</h2>
-                    <input name="date" value={formData.date} onChange={handlechange}  className="outline-blue-500  text-md sm:text-xl border text-blue-300 border-gray-400 rounded-md px-8 py-2 " type="date" required />
+                    <input name="date" value={formData.date} onChange={handlechange}  className="outline-blue-500 text-md sm:text-xl    dark:text-blue-300 text-shadow-md  rounded-md border border-gray-300 dark:border-white/10  px-8 py-2" type="date" required />
                 </div>
 
                 <div className="flex justify-center items-center">
