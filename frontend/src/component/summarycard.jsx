@@ -31,12 +31,7 @@ border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl mt-3 mx-1
                     Array.isArray(transaction) &&
                     [...transaction].reverse().map((item) => (
 
-                        <div key={item.id} className="relative grid grid-cols-4 items-center text-xs sm:text-lg 
-  bg-gray-100 dark:bg-[#14243c]/10 
-  border border-gray-200 dark:border-white/10 
-  rounded-md sm:rounded-xl cursor-pointer px-1 py-2 sm:py-3 
-  hover:bg-gray-200 dark:hover:bg-[#14243c]/30 
-  transition duration-200">
+                        <div key={item.id} className="relative grid grid-cols-4 items-center text-xs sm:text-lg bg-gray-100 dark:bg-[#14243c]/10 border border-gray-200 dark:border-white/10 rounded-md sm:rounded-xl cursor-pointer px-1 py-2 sm:py-3 hover:bg-gray-200 dark:hover:bg-[#14243c]/30 transition duration-200">
                             <div className="text-[11px] sm:text-xl">{item.date}</div>
                             <div className="text-sm sm:text-xl">{item.description}</div>
                             <div className="text-sm sm:text-xl">{item.category}</div>

@@ -36,7 +36,7 @@ function Balanceoverview() {
                 <div className=" w-full hover:scale-105 transition-all duration-300 bg-gray-100 dark:bg-[#14243c]/20  border border-gray-200 dark:border-white/10 rounded-xl p-5 flex justify-between items-center hover:bg-gray-200 dark:hover:bg-red-800/20">
                     <div className="flex flex-col">
 
-                        <span className="text-2xl text-white font-semibold">Total Expenses</span>
+                        <span className="text-2xl text-white font-semibold">Total Expense</span>
                         <p className="text-xl mt-2 text-red-400">$ {Math.abs(totalExpense)}</p>
                     </div>
                     <i className="text-4xl w-14 h-14 text-center  p-2 rounded-xl bg-red-300/10 text-red-600 fa-solid fa-arrow-trend-down"></i>
