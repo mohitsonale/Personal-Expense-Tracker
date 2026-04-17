@@ -17,8 +17,8 @@ function App() {
   const { showlogin,darkMode } = useContext(ExpenseContext)
 
   return (
-    <div className={darkMode ? "relative min-h-screen w-full bg-black transition-colors duration-500 overflow-hidden" : "relative min-h-screen w-full bg-[#cbb89d]/50 transition-colors duration-500 overflow-hidden"}>
-
+    <div className={ "relative min-h-screen w-full bg-black transition-colors duration-500 overflow-hidden"}>
+{/* "relative min-h-screen w-full bg-[#cbb89d]/50 transition-colors duration-500 overflow-hidden" */}
     {
       darkMode &&
         <div className="absolute inset-0 z-0 pointer-events-none">
