@@ -46,7 +46,7 @@ function Navbar() {
                                 bg-[#14243c]/10  sm:bg-transparent p-4 sm:p-0 rounded-lg shadow-lg sm:shadow-none`}
                                 >
                                     <li className="nav text-blue-300 text-center bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500 " onClick={() => { navigate("/dashboard"); setOpenMenu(false); }}>Dashboard</li>
-                                    <li className="nav text-blue-300 text-center bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500" onClick={() => { navigate("/addtransaction"); setOpenMenu(false); }}>Add Expense</li>
+                                    <li className="nav text-blue-300  bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500" onClick={() => { navigate("/addtransaction"); setOpenMenu(false); }}>Add Expense</li>
                                     <li onClick={logout} className="nav text-red-400  bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500 ">Logout:{user.name}</li>
 
                                 </ul>
