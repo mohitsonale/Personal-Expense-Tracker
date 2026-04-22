@@ -2,25 +2,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@100..900&display=swap');
 
-*{
-  font-family:Outfit;
+* {
+  font-family: Outfit;
 }
 
 .custom-scroll::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-    background: #1e3a5f; 
-    border-radius: 10px;
+  background: #1e3a5f;
+  border-radius: 10px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-    background: #2563eb; 
+  background: #2563eb;
 }
 
 .loader {
@@ -33,6 +33,59 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.custom-toast {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid #22c55e;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid #ef4444;
+}
+
+
+.glass-card {
+  background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(138, 43, 226, 0.2), transparent 40%),
+    #050816;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.nav {
+  background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(138, 43, 226, 0.2), transparent 40%),
+    #050816;
+}
+
+.nav:hover {
+
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
 }

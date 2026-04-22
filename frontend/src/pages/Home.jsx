@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     return (
         <div>
 
 
 
-          
+
             <motion.div
                 className="flex flex-col  items-center text-center w-full min-h-screen justify-center"
 
@@ -23,12 +23,12 @@ function Home() {
 
 
                 <div className="w-32 h-32 mb-10 flex items-center justify-center">
-                      <CircularText
-                text="PERSONAL*EXPENSES*TRACKER*"
-                onHover="speedUp"
-                spinDuration={20}
-                className="custom-class"
-            />
+                    <CircularText
+                        text="PERSONAL*EXPENSES*TRACKER*"
+                        onHover="speedUp"
+                        spinDuration={20}
+                        className="custom-class"
+                    />
 
                 </div>
 
@@ -45,15 +45,32 @@ function Home() {
                 <p className="mt-4 text-xl bg-gradient-to-l from-red-500/50 to-white/50 bg-clip-text text-transparent">
                     <TextType
                         text={[
-                            "Monitor your finances with real time insights and beautiful analytics."
+                            "Track, analyze, and control your finances in real-time with smart insights."
                         ]}
                         typingSpeed={60}
                         showCursor
                     />
                 </p>
-             
 
-                 {/* <button
+                <div className="flex gap-6 mt-8 justify-center text-white">
+                    <div className="glass-card p-4 text-center">
+                        <h2 className="text-xl text-blue-300  font-bold">10K+</h2>
+                        <p className="text-sm  text-gray-400">Transactions</p>
+                    </div>
+
+                    <div className="glass-card p-4 text-center">
+                        <h2 className="text-xl text-blue-300  font-bold">99%</h2>
+                        <p className="text-sm text-gray-400">Accuracy</p>
+                    </div>
+
+                    <div className="glass-card p-4 text-center">
+                        <h2 className="text-xl text-blue-300  font-bold">24/7</h2>
+                        <p className="text-sm text-gray-400">Tracking</p>
+                    </div>
+                </div>
+
+
+                {/* <button
                     onClick={() => navigate("/dashboard")}
                     className="mt-8 px-6 py-3 rounded-xl 
                     bg-blue-900 hover:bg-blue-800 
