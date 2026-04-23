@@ -100,6 +100,8 @@ function Addtransaction() {
                             <option value="travel" >Travel</option>
                             <option value="bills">Bills</option>
                             <option value="shopping">Shopping</option>
+                            <option value="income">Income</option>
+                            <option value="addextra">Additional Income</option>
                             <option value="other">Other</option>
 
                         </select>
