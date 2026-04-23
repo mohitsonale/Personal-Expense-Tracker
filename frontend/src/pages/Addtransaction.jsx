@@ -55,7 +55,7 @@ function Addtransaction() {
             viewport={true}
         >
 
-            <form onSubmit={handleSubmit} className="relative   px-10 py-8   mt-12 sm:mt-15 bg-white text-black dark:bg-[#14243c]/8 border border-gray-200 dark:border-white/5 rounded-2xl  dark:text-white shadow-2xl transition-colors duration-500   " >
+            <form onSubmit={handleSubmit} className="relative  px-5 sm:px-10 py-8   mt-12 sm:mt-15 bg-white text-black dark:bg-[#14243c]/8 border border-gray-200 dark:border-white/5 rounded-2xl  dark:text-white shadow-2xl transition-colors duration-500   " >
 
                 <h1 className="text-center font-medium text-3xl mb-5 text-blue-500  drop-shadow-[0_0_10px_#3b82f6]">New Transaction</h1>
 
@@ -101,7 +101,7 @@ function Addtransaction() {
                             <option value="bills">Bills</option>
                             <option value="shopping">Shopping</option>
                             <option value="income">Income</option>
-                            <option value="addextra">Additional Income</option>
+                            <option value="addextra">Additional</option>
                             <option value="other">Other</option>
 
                         </select>
