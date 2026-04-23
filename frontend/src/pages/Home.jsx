@@ -22,7 +22,7 @@ function Home() {
             >
 
 
-                <div className="w-32 h-32 mb-10 mt-15 sm:mt-20 flex items-center justify-center">
+                <div className="w-32 h-32 mb-10 mt-15 drop-shadow-[0_0_10px_#3b82f6] sm:mt-20 flex items-center justify-center">
                     <CircularText
                         text="PERSONAL*EXPENSES*TRACKER*"
                         onHover="speedUp"
