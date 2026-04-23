@@ -11,10 +11,10 @@ function Summarycard() {
     return (
 
         <div className="bg-white text-black dark:bg-[#14243c]/20 dark:text-white border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl mt-3 mx-1.5 sm:mx-2 transition-colors duration-500">
-            <h1 className="text-md text-center sm:text-left text-2xl  sm:text-3xl text-blue-400">Recent Transactions</h1>
+            <h1 className="text-md text-center sm:text-left text-2xl  sm:text-3xl text-blue-400 drop-shadow-[0_0_10px_#3b82f6]">Recent Transactions</h1>
             <hr />
 
-            <div className="grid grid-cols-4 text-sm sm:text-2xl mt-4 mb-2 items-center text-gray-600 dark:text-gray-300 ">
+            <div className="grid grid-cols-4 text-sm sm:text-2xl mt-4 mb-2 items-center">
 
                 <div>Date</div>
                 <div className="sm:hidden">Desc.</div>
@@ -39,8 +39,8 @@ function Summarycard() {
 
                             <div
                                 className={` font-medium ${item.type === "expense"
-                                    ? "text-red-500"
-                                    : "text-green-600"
+                                    ? "sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-red-500"
+                                    : "sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-green-600"
                                     }`}
                             >
                                 {item.type === "expense" ? "-" : "+"}

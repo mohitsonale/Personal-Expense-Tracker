@@ -10,6 +10,7 @@ function Navbar() {
 
     const navigate = useNavigate()
     const [openMenu, setOpenMenu] = useState(false);
+    const [open,Setopen]=useState(false);
 
     return (
 
@@ -23,7 +24,7 @@ function Navbar() {
 
                 <div>
 
-                    <h1 className="nav text-blue-300 text-center bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500" onClick={() => navigate("/")}>Fintracko</h1>
+                    <h1 className="nav text-blue-300 text-center bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500 " onClick={() => navigate("/")}>Fintracko</h1>
                 </div>
 
                 <div className="flex items-center gap-3 relative">
@@ -47,7 +48,26 @@ function Navbar() {
                                 >
                                     <li className="nav text-blue-300 text-center bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500 " onClick={() => { navigate("/dashboard"); setOpenMenu(false); }}>Dashboard</li>
                                     <li className="nav text-blue-300  bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500" onClick={() => { navigate("/addtransaction"); setOpenMenu(false); }}>Add Expense</li>
-                                    <li onClick={logout} className="nav text-red-400  bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500 ">Logout:{user.name}</li>
+                                   
+
+                                    <div className="relative">
+
+                                        <div onClick={() => Setopen(!open)} className=" nav text-blue-300  bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500">
+                                            Hi, {user.name}
+                                        </div>
+
+                                      
+                                        {open && (
+                                            <div className="absolute right-0 mt-2 w-25 sm:w-50  ">
+
+                                             
+
+                                                <div onClick={logout} className=" nav text-red-400 text-center   bg-[#14243c]/20  border  border-white/10 rounded-2xl px-4 py-2 shadow-2xl  duration-500 ">
+                                                    Logout
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
 
                                 </ul>
 

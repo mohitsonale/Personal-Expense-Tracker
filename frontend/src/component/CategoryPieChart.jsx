@@ -31,9 +31,8 @@ function CategoryPieChart() {
   const COLORS = ["#3b82f6", "#ef4444", "#22c55e", "#f59e0b", "#a855f7"];
 
   return (
-    <div className="  mt-10 mx-2 mb-5 lg:mb-0 lg:mx-10 hover:scale-105 transition-all duration-500  bg-white text-black dark:bg-[#14243c]/20 dark:text-white 
-border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl">
-      <h1 className="text-md text-center  text-2xl  lg:text-3xl text-blue-400">Spending By Category</h1>
+    <div className="  mt-10 mx-2 mb-5 lg:mb-0 lg:mx-10 hover:scale-105 transition-all duration-500  bg-white text-black dark:bg-[#14243c]/20 dark:text-white border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl">
+      <h1 className="text-md text-center  text-2xl  lg:text-3xl text-blue-400  drop-shadow-[0_0_10px_#3b82f6]">Spending By Category</h1>
       <div className="w-full h-[280px] sm:h-[350px] flex justify-center items-center">
 
         <ResponsiveContainer width="100%" height="100%">
