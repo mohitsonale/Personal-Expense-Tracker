@@ -101,7 +101,7 @@ function Addtransaction() {
                             <option value="bills">Bills</option>
                             <option value="shopping">Shopping</option>
                             <option value="income">Income</option>
-                            <option value="addextra">Additional</option>
+                            <option value="extra">Additional</option>
                             <option value="other">Other</option>
 
                         </select>
