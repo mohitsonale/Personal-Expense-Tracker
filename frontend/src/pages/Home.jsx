@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
-import logo1 from "../assets/logo1.png";
+
 import TextType from "../../animation/TextType";
 import CircularText from "../../animation/CircularText";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ExpenseContext } from "../context/ExpenseContext";
 
 function Home() {
 
     const navigate = useNavigate()
+
+    const {user,Setshowlogin}=useContext(ExpenseContext)
     return (
         <div>
 
@@ -24,7 +28,7 @@ function Home() {
 
                 <div className="w-32 h-32 mb-10 mt-15 drop-shadow-[0_0_10px_#3b82f6] sm:mt-20 flex items-center justify-center">
                     <CircularText
-                        text="PERSONAL*EXPENSES*TRACKER*"
+                        text="FINTRACKO*EXPENSES*TRACKER*"
                         onHover="speedUp"
                         spinDuration={20}
                         className="custom-class"
@@ -51,6 +55,32 @@ function Home() {
                         showCursor
                     />
                 </p>
+               
+               {
+                user ?
+                  <button onClick={()=>navigate("/dashboard")}
+                    className=" mt-8 px-6 py-3 rounded-xl 
+                    bg-blue-400 text-xl hover:bg-blue-800 
+                    text-black font-extrabold  cursor-pointer
+                    transition duration-500 hover:-translate-y-1.5 shadow-lg"
+                    >
+                    Go to Dashboard
+                   
+                </button>
+                :
+                
+                <button onClick={()=>Setshowlogin(true)}
+                    className=" mt-8 px-6 py-3 rounded-xl 
+                    bg-blue-400 text-xl hover:bg-blue-800 
+                    text-black font-extrabold  cursor-pointer
+                    transition duration-500 hover:-translate-y-1.5 shadow-lg"
+                    >
+                    Get Started 
+                   
+                </button>
+
+                
+               }
 
                 <div className="flex gap-6 mt-8 justify-center text-white">
                     <div className="glass-card p-4 text-center">
@@ -69,16 +99,7 @@ function Home() {
                     </div>
                 </div>
 
-
-                {/* <button
-                    onClick={() => navigate("/dashboard")}
-                    className="mt-8 px-6 py-3 rounded-xl 
-                    bg-blue-900 hover:bg-blue-800 
-                    text-white font-medium 
-                    transition duration-300 hover:scale-105 shadow-lg"
-                >
-                    Get Started 🚀
-                </button> */}
+              
 
             </motion.div>
 
