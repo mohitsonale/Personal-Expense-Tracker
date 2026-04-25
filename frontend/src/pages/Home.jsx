@@ -18,7 +18,7 @@ function Home() {
 
 
             <motion.div
-                className="flex flex-col  items-center text-center w-full min-h-screen justify-center"
+                className="flex flex-col mt-8 sm:mt-4 items-center text-center w-full min-h-screen justify-center"
 
                 initial={{ opacity: 0.2, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ function Home() {
             >
 
 
-                <div className="w-32 h-32 mb-10 mt-15 drop-shadow-[0_0_10px_#3b82f6] sm:mt-20 flex items-center justify-center">
+                <div className="w-32 h-32 mb-10  drop-shadow-[0_0_10px_#3b82f6] sm:mt-20 flex items-center justify-center">
                     <CircularText
                         text="FINTRACKO*EXPENSES*TRACKER*"
                         onHover="speedUp"

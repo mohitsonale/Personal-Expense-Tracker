@@ -4,20 +4,41 @@ import Addtransaction from "./pages/Addtransaction";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./component/Navbar";
 import Home from "./pages/Home";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ExpenseContext } from "./context/ExpenseContext";
 import Login from "./component/Login";
 import { ToastContainer } from "react-toastify";
 import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/Forgotpassword";
 import ResetPassword from "./pages/Resetpassword";
+import SplashScreen from "./component/SplashScreen";
 
 function App() {
+  
 
   const { showlogin } = useContext(ExpenseContext)
 
+  const [loading,Setloading]=useState(true);
+
+  useEffect(()=>{
+
+    setTimeout(()=>{
+      Setloading(false);
+    },4000);
+  },[])
+
   return (
-    <div className={ "relative min-h-screen w-full bg-black  transition-colors duration-500 overflow-hidden"}>
+    <>
+
+    {
+      loading ?(
+        <SplashScreen onFinish={()=>Setloading(false)} />
+      )
+      
+      :
+    (
+
+      <div className={ "relative min-h-screen w-full bg-black  transition-colors duration-500 overflow-hidden"}>
 {/* "relative min-h-screen w-full bg-[#cbb89d]/50 transition-colors duration-500 overflow-hidden" */}
    
         <div className="absolute inset-0 z-0 pointer-events-none">
@@ -42,9 +63,9 @@ function App() {
   
       <ToastContainer
         position="top-right"
-  autoClose={3000}
-  toastClassName="custom-toast"
-       />
+        autoClose={3000}
+        toastClassName="custom-toast"
+        />
       <Navbar className="relative z-10 " />
       {
         showlogin && (
@@ -64,6 +85,9 @@ function App() {
       </div>
 
     </div>
+  )
+    }
+ </>
   );
 
 }
