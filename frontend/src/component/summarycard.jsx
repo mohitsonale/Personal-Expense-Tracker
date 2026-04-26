@@ -39,7 +39,7 @@ function Summarycard() {
 
                             <div
                                 className={` font-medium ${item.type === "expense"
-                                    ? "text-[11px] sm:text-xl    drop-shadow-[0_0_10px_#3b82f6] text-red-500"
+                                    ? "text-[11px] sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-red-500"
                                     : "text-[11px] sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-green-600"
                                     }`}
                             >
