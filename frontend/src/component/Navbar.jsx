@@ -28,7 +28,7 @@ function Navbar() {
                         src={symbol1}
                         alt="Fintracko Logo"
                         onClick={() => navigate("/")}
-                        className="sm:hidden w-13 h-12 mt-1 cursor-pointer bg-[#14243c]/20 rounded-md hover:-translate-y-1.5  duration-500 "
+                        className="sm:hidden w-13 h-12 mt-1 cursor-pointer rounded-xl bg-[#14243c]/20  hover:-translate-y-1.5  duration-500 "
                     />
 
                     <img
