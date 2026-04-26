@@ -14,8 +14,8 @@ const Home=lazy(()=>import("./pages/Home"));
 const Dashboard=lazy(()=>import("./pages/Dashboard"));
 const Addtransaction=lazy(()=>import("./pages/Addtransaction"));
 const Verify=lazy(()=>import("./pages/Verify"));
-const ForgotPassword=lazy(()=>import("./pages/ForgotPassword"));
-const ResetPassword=lazy(()=>import("./pages/ResetPassword"));
+const ForgotPassword=lazy(()=>import("./pages/Forgotpassword"));
+const ResetPassword=lazy(()=>import("./pages/Resetpassword"));
 
 function App() {
   
