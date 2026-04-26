@@ -15,7 +15,7 @@ function Navbar() {
     return (
 
 
-        <div className="fixed z-50 w-full">
+        <div className="static sm:fixed z-50 w-full">
 
 
 

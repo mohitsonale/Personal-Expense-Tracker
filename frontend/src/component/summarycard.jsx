@@ -20,18 +20,18 @@ function Summarycard() {
                 <div className="sm:hidden">Desc.</div>
                 <div className="hidden sm:inline">Description</div>
                 <div>Category</div>
-                <div>Amount</div>
+                <div>Amount</div>   
 
 
             </div>
 
-            <div className="max-h-[240px] overflow-y-scroll pr-1 mt-2 space-y-3 custom-scroll" >
+            <div className="max-h-[240px] overflow-y-scroll   mt-2 space-y-3 custom-scroll" >
                 {
 
                     Array.isArray(transaction) &&
                     [...transaction].reverse().map((item) => (
 
-                        <div key={item.id} className="relative grid grid-cols-4 items-center hover:scale-105 text-xs sm:text-lg bg-gray-100 dark:bg-[#14243c]/10 border border-gray-200 dark:border-white/10 rounded-md sm:rounded-xl cursor-pointer px-1 py-2 sm:py-3 hover:bg-gray-200 dark:hover:bg-[#14243c]/30 transition duration-500">
+                        <div key={item.id} className="relative grid grid-cols-4 items-center  hover:scale-105 text-xs sm:text-lg bg-gray-100 dark:bg-[#14243c]/10 border border-gray-200 dark:border-white/10 rounded-md sm:rounded-xl cursor-pointer px-1 py-2 sm:py-3 hover:bg-gray-200 dark:hover:bg-[#14243c]/30 transition duration-500">
                             <div className="text-[11px] sm:text-xl">{item.date}</div>
                             <div className="text-sm sm:text-xl">{item.description}</div>
                             <div className="text-sm sm:text-xl">{item.category}</div>

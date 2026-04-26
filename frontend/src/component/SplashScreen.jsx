@@ -4,16 +4,15 @@ import symbol1 from "../assets/symbol1.png";
 import LightRays from "../../animation/LightRays";
 
 function SplashScreen({ onFinish }) {
-    const [phase, setPhase] = useState(0); // 0 = show, 1 = scale, 2 = rotate, 3 = split
+    const [phase, setPhase] = useState(0); 
     const [exit, Setexit] = useState(false);
 
     useEffect(() => {
         const timers = [
-            setTimeout(() => setPhase(1), 700),   // scale
-            setTimeout(() => setPhase(2), 1400),  // rotate
-            setTimeout(() => setPhase(3), 2300),  // split (delay)
-            // setTimeout(() => Setexit(true), 3200),
-            setTimeout(() => onFinish(), 3500)    // finish
+            setTimeout(() => setPhase(1), 700),  
+            setTimeout(() => setPhase(2), 1400),  
+            setTimeout(() => setPhase(3), 2300),  
+            setTimeout(() => onFinish(), 3500)    
         ];
 
         return () => timers.forEach(clearTimeout);
@@ -22,7 +21,6 @@ function SplashScreen({ onFinish }) {
     return (
         <motion.div
             initial={{ opacity: 1 }}
-            animate={{ opacity: exit ? 0 : 1 }}
             transition={{ duration: 0.5 }}
             className="fixed inset-0 z-[100]  bg-black  overflow-hidden">
 
