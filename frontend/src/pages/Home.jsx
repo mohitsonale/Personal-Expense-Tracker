@@ -18,7 +18,7 @@ function Home() {
 
 
             <motion.div
-                className="flex flex-col mt-8 sm:mt-4 items-center text-center w-full min-h-screen justify-center"
+                className="flex flex-col -mt-11 sm:mt-4 items-center text-center w-full min-h-screen justify-center"
 
                 initial={{ opacity: 0.2, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
