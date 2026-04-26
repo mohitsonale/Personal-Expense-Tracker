@@ -39,14 +39,14 @@ function Summarycard() {
 
                             <div
                                 className={` font-medium ${item.type === "expense"
-                                    ? "sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-red-500"
-                                    : "sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-green-600"
+                                    ? "text-[11px] sm:text-xl    drop-shadow-[0_0_10px_#3b82f6] text-red-500"
+                                    : "text-[11px] sm:text-xl drop-shadow-[0_0_10px_#3b82f6] text-green-600"
                                     }`}
                             >
                                 {item.type === "expense" ? "-" : "+"}
                                 ₹{item.amount}
                             </div>
-                            <i onClick={() => { if (window.confirm("Are you really sure!!!")) { deleteTransaction(item.id) } }} className="absolute right-1 sm:right-3 cursor-pointer text-red-600  fa-regular fa-trash-can"></i>
+                            <i onClick={() => { if (window.confirm("Are you really sure!!!")) { deleteTransaction(item.id) } }} className="absolute right-0.5 sm:right-3 cursor-pointer text-red-600  fa-regular fa-trash-can"></i>
 
 
 

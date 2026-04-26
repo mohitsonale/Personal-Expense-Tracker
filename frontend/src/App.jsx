@@ -1,24 +1,30 @@
 import { Routes, Route } from "react-router-dom";
 import LightRays from "../animation/LightRays";
-import Addtransaction from "./pages/Addtransaction";
-import Dashboard from "./pages/Dashboard";
 import Navbar from "./component/Navbar";
-import Home from "./pages/Home";
 import { useContext, useEffect, useState } from "react";
 import { ExpenseContext } from "./context/ExpenseContext";
 import Login from "./component/Login";
 import { ToastContainer } from "react-toastify";
-import Verify from "./pages/Verify";
-import ForgotPassword from "./pages/Forgotpassword";
-import ResetPassword from "./pages/Resetpassword";
 import SplashScreen from "./component/SplashScreen";
+import {lazy} from "react";
+import { Suspense } from "react";
+import Loader from "./component/Loader";
+
+const Home=lazy(()=>import("./pages/Home"));
+const Dashboard=lazy(()=>import("./pages/Dashboard"));
+const Addtransaction=lazy(()=>import("./pages/Addtransaction"));
+const Verify=lazy(()=>import("./pages/Verify"));
+const ForgotPassword=lazy(()=>import("./pages/ForgotPassword"));
+const ResetPassword=lazy(()=>import("./pages/ResetPassword"));
 
 function App() {
   
 
   const { showlogin } = useContext(ExpenseContext)
 
-  const [loading,Setloading]=useState(true);
+  const [loading,Setloading]=useState(
+    !sessionStorage.getItem("splashShow")
+  );
 
   useEffect(()=>{
 
@@ -32,7 +38,7 @@ function App() {
 
     {
       loading ?(
-        <SplashScreen onFinish={()=>Setloading(false)} />
+        <SplashScreen onFinish={()=> {sessionStorage.setItem("splashShow","true"); Setloading(false)}} />
       )
       
       :
@@ -74,6 +80,8 @@ function App() {
           </div>
         )}
       <div className="relative z-10 px-4 sm:px-8 lg:px-12">
+        <Suspense fallback={<Loader />}>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -82,6 +90,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
+        </Suspense>
       </div>
 
     </div>
